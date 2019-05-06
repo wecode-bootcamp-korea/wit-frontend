@@ -1,23 +1,19 @@
-import React  from 'react';
+
+import React from 'react';
 import './Button.scss';
+
 class Button extends React.Component {
-
-
-
-
-
-render() {
-
+  render() {
     return (
       <button
-        className='login-btn'
-        // onClick={this.handleClick.bind(this)}
+        className="btn"
+        onClick={this.props.click}
+
         >
-        {this.props.text} {this.props.name}
+        {this.props.text}
       </button>
     );
   }
-
 }
 
 export default Button;
