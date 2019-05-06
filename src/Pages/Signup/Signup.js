@@ -1,15 +1,16 @@
 import React from 'react';
-import './Login.scss';
+import './Signup.scss';
 import Button from '../../Components/Button/Button'
 
 
-class Login extends React.Component {
+class Signup extends React.Component {
   constructor() {
     super();
     this.state  = { //to remember things, component uses state.
       userId: '',
       Password: '',
-      text: 'loginpage..' //컴포넌틈 상태 저장해있어야. 텍스트값을 계속변화시킬거임.
+      Nickname: '',
+      text: '' //컴포넌틈 상태 저장해있어야. 텍스트값을 계속변화시킬거임.
     };
 
     //class를 만들때 항상 거치는 메소드.
@@ -31,14 +32,14 @@ class Login extends React.Component {
   }
 
   handleClick() {
-    fetch('localhost:8000/login', {
+    fetch('localhost:8000/signup', {
       body: {
         Id: this.state.userId,
-        Pw: this.state.Password
+        Pw: this.state.Password,
+        Nn: this.state.Nickname
       }
     })
 
-    console.log(this);
     this.setState({
       text:this.state.userId
     });
@@ -56,13 +57,17 @@ class Login extends React.Component {
       Password: pw.target.value
     })
   }
+  handleChangeNN(nn) {
+    this.setState({
+      Nickname: nn.target.value
+    })
+  }
+
   render() {
 
     let self = this;
     return (
       <div>
-
-
         <form  className="wrapper">
           <div>
             <input
@@ -82,37 +87,26 @@ class Login extends React.Component {
                onChange={this.handleChangePW.bind(this)}
              />
           </div>
+          <div>
+             <input
+               className="idpw-input"
+               type="text"
+               placeholder="닉네임"
+               value={this.state.Nickname}
+               onChange={this.handleChangeNN.bind(this)}
+             />
+          </div>
         </form>
           <div>
             <Button
-
-            text="로그인"
+            text="계속하기"
             click={this.handleClick.bind(this)}/>
           </div>
-          <p>비회원이세요? 바로 시작하기</p>
-          <div>
-            <Button
 
-            text="회원가입"/>
-          </div>
-          <span>아이디찾기</span>
-          <span>비밀번호찾기</span>
-
-
-
-
-        <p onClick={this.handleClick.bind(self)}>
-
-
-        id: {this.state.userId} <br/>
-        pw: {this.state.Password}
-
-
-        </p>
 
       </div>
     )
   }
 }
 
-export default Login;
+export default Signup;
