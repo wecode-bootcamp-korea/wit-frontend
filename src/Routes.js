@@ -4,7 +4,10 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
+
 import Login from './Pages/Login/Login'
+import Interval from './Pages/StartInterval/StartInterval'
+
 
 class Routes extends React.Component {
   render() {
@@ -12,6 +15,7 @@ class Routes extends React.Component {
       <Router>
         <Switch>
           <Route exact path="/login" component={Login} />
+          <Route path="/Interval" component={Interval} />
         </Switch>
       </Router>
     )

@@ -1,0 +1,102 @@
+.globaltab {
+  height: 20px;
+  background-color: black;
+}
+p#globalogo {
+  margin-top:0;
+  color: white;
+  text-align: left;
+  font-size:14px;
+}
+
+.upperbox {
+  height: 60px;
+  background-color: rgb(103, 106, 105);
+  margin-block-start: none;
+}
+
+p#aboutext {
+  color: white;
+  font-size: 120%;
+  text-align: left;
+}
+
+.container {
+    margin-top: 10px;
+    width: 100%;
+    background-color: #ffcc33;
+}
+
+#first {
+    width: 25%;
+    height: 100px;
+    background-color: #8e8c8c;
+    margin : 0;
+    display: inline-block;
+
+}
+#second {
+    width: 25%;
+    height: 100px;
+    background-color: #8e8c8c;
+    margin : 0;
+    display: inline-block;
+
+
+}
+#third {
+    width: 25%;
+    height: 100px;
+    background-color: #8e8c8c;
+    margin : 0;
+    display: inline-block;
+
+
+}
+#fourth {
+    width: 25%;
+    height: 100px;
+    background-color: #8e8c8c;
+    margin : 0;
+    display: inline-block;
+
+
+}
+
+p {
+  text-align: center;
+  color: white;
+}
+
+.youtube {
+  float:right;
+  margin-right: 40px;
+  margin-top: 20px;
+  display: inline-block;
+
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+}
+.timecontainer {
+    background: #222;
+    width: 600px;
+    height: 315px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    display: inline-block;
+
+}
+#timer {
+    color: #fff;
+    font-size: 4rem;
+}
+.label {
+    font-size: 2.5rem;
+    padding-left: 0.25rem;
+}

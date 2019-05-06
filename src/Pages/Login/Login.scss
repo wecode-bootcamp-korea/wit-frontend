@@ -1,5 +1,36 @@
 $green: #1d6a43;
+* {
+  box-sizing: border-box;
+}
 
-p {
-  color: green;
+
+p .maintext {
+  text-align: center;
+  margin: 10px;
+  color: black;
+}
+.box, .idpw-input {
+  width : 298px;
+  height: 45px;
+  font-size: 16px;
+  padding: 11px 10px 11px 13px;
+  margin: 10px;
+  border: 2px solid black;
+}
+
+.login-id-input {
+  color: red;
+  font-size: 20px;
+  padding: 10px 20px;
+  margin: 100px;
+  border: 2px solid black;
+}
+
+
+.login-password-input {
+  color: red;
+  font-size: 20px;
+  padding: 10px 20px;
+  margin: 100px;
+  border: 2px solid black;
 }
