@@ -7,7 +7,7 @@ import {
 
 import Login from './Pages/Login/Login'
 import Interval from './Pages/StartInterval/StartInterval'
-
+import Signup from './Pages/Signup/Signup'
 
 class Routes extends React.Component {
   render() {
@@ -15,6 +15,8 @@ class Routes extends React.Component {
       <Router>
         <Switch>
           <Route exact path="/login" component={Login} />
+
+          <Route exact path="/signup" component={Signup} />
           <Route path="/StartInterval" component={Interval} />
         </Switch>
       </Router>

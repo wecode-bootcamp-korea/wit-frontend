@@ -3,9 +3,16 @@ $green: #1d6a43;
   box-sizing: border-box;
 }
 
-
-p .maintext {
+.wrapper {
+  position: relative;
+  width: 308px;
+  
+}
+.spanblock {
   text-align: center;
+}
+.maintext {
+
   margin: 10px;
   color: black;
 }
