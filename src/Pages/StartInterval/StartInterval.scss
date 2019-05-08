@@ -24,53 +24,61 @@ p#aboutext {
 .container {
     margin-top: 10px;
     width: 100%;
-    background-color: #ffcc33;
 }
 
 #first {
-    width: 25%;
-    height: 100px;
-    background-color: #8e8c8c;
-    margin : 0;
+    width: 23%;
+    height: 120px;
+    margin-left: 20px;
+    margin-right: 10px;
     display: inline-block;
+    border-radius: 20px;
+    border: 4px solid rgb(47, 48, 55);
 
 }
 #second {
-    width: 25%;
-    height: 100px;
-    background-color: #8e8c8c;
+    width: 23%;
+    height: 120px;
     margin : 0;
     display: inline-block;
-
+    border-radius: 20px;
+    border: 4px solid rgb(47, 48, 55);
+    margin-right: 10px;
 
 }
 #third {
-    width: 25%;
-    height: 100px;
-    background-color: #8e8c8c;
+    width: 23%;
+    height: 120px;
     margin : 0;
     display: inline-block;
+    border-radius: 20px;
+    border: 4px solid rgb(47, 48, 55);
 
+    margin-right: 10px;
 
 }
 #fourth {
-    width: 25%;
-    height: 100px;
-    background-color: #8e8c8c;
+    width: 23%;
+    height: 120px;
     margin : 0;
     display: inline-block;
+    border-radius: 20px;
+    border: 4px solid rgb(47, 48, 55);
+    margin-right: 10px;
+
 
 
 }
 
 .exname {
   text-align: center;
-  color: white;
+  color: black;
+  font-size: 20px;
 }
 
 .youtube {
   float:right;
-  margin-right: 40px;
+  margin-right: 63px;
   margin-top: 20px;
   display: inline-block;
 
@@ -82,6 +90,7 @@ body {
     padding: 0;
 }
 .timecontainer {
+    margin-left: 20px;
     background: #222;
     width: 600px;
     height: 315px;
@@ -99,4 +108,55 @@ body {
 .label {
     font-size: 2.5rem;
     padding-left: 0.25rem;
+}
+
+
+
+body {
+  height: 100%;
+  width: 100%;
+  background-color: #333;
+}
+
+#countdown {
+  position: relative;
+  margin: auto;
+  margin-top: 100px;
+  height: 40px;
+  width: 40px;
+  text-align: center;
+}
+
+#countdown-number {
+  color: white;
+  display: inline-block;
+  line-height: 40px;
+}
+
+svg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  transform: rotateY(-180deg) rotateZ(-90deg);
+}
+
+svg circle {
+  stroke-dasharray: 113px;
+  stroke-dashoffset: 0px;
+  stroke-linecap: round;
+  stroke-width: 2px;
+  stroke: white;
+  fill: none;
+  animation: countdown 10s linear infinite forwards;
+}
+
+@keyframes countdown {
+  from {
+    stroke-dashoffset: 0px;
+  }
+  to {
+    stroke-dashoffset: 113px;
+  }
 }
