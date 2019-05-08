@@ -32,17 +32,26 @@ class Signup extends React.Component {
   }
 
   handleClick() {
-    fetch('localhost:8000/signup', {
-      body: {
-        Id: this.state.userId,
-        Pw: this.state.Password,
-        Nn: this.state.Nickname
+    fetch('http://localhost:8000/user', {
+      method:"POST",
+      headers: {
+        'Content-Type':'application/json',
+      },
+
+      body:  JSON.stringify({
+        user_email: this.state.userId,
+        user_password: this.state.Password,
+        user_nickname: "ddd"
+    })
+  })
+    .then(response=> response.json()) //header & status 정보
+    .then(response=> {
+      console.log(response)
+
+      if (response.message === "email already exists") {
+        alert("이미 존재하는 아이디입니다.")
       }
     })
-
-    this.setState({
-      text:this.state.userId
-    });
 
   }
   handleChange(e) {

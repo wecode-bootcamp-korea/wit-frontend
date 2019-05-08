@@ -3,20 +3,24 @@ import './StartInterval.scss';
 
 
 class Interval extends React.Component {
-
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     countdown: 10
+  //   }
+  // }
 
   render() {
 
-    let countdownNumberEl = document.getElementById('countdown-number');
-    let countdown = 10;
+    // let countdownNumberEl = document.getElementById('countdown-number');
+    // let countdown = 10;
 
-    countdownNumberEl.textContent = countdown;
-
-    setInterval(function() {
-      countdown = --countdown <= 0 ? 10 : countdown;
-
-      countdownNumberEl.textContent = countdown;
-    }, 1000);
+    // countdownNumberEl.textContent = countdown;
+    //
+    // setInterval(function() {
+    //   countdown = --countdown <= 0 ? 10 : countdown;
+    //   countdownNumberEl.textContent = countdown;
+    // }, 1000);
 
 
     return (
@@ -50,6 +54,7 @@ class Interval extends React.Component {
         <div>
           <div id="countdown">
             <div id="countdown-number"></div>
+              {this.state.countdown}
             <svg>
               <circle r="18" cx="20" cy="20"></circle>
             </svg>
