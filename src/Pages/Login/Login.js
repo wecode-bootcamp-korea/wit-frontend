@@ -2,8 +2,6 @@ import React from 'react';
 import './Login.scss';
 import Button from '../../Components/Button/Button'
 
-
-
 class Login extends React.Component {
   constructor() {
     super();
@@ -34,10 +32,14 @@ class Login extends React.Component {
   handleClick() {
 
     fetch('localhost:8000/login', {
-      body: {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
         Id: this.state.userId,
         Pw: this.state.Password
-      }
+      })
     })
 
     console.log(this);
@@ -46,32 +48,29 @@ class Login extends React.Component {
     });
 
   }
-  handleChange(e) {
-    console.log(e.target.value)
-
+  handleChange = (e) => {
     this.setState({
-      userId: e.target.value
-    })
+      [e.target.name]: e.target.value
+    });
   }
-  handleChangePW(pw) {
-    this.setState({
-      Password: pw.target.value
-    })
-  }
+  // handleChangePW(pw) {
+  //   this.setState({
+  //     Password: pw.target.value
+  //   })
+  // }
   render() {
 
     let self = this;
     return (
       <div>
-
-
-        <form  className="wrapper">
+        <form className="wrapper">
           <div>
             <input
                className="idpw-input"
                type="text"
                placeholder = "이메일"
                value={this.state.userId}
+               name="userId"
                onChange={this.handleChange.bind(this)}
             />
           </div>
@@ -81,37 +80,32 @@ class Login extends React.Component {
                type="password"
                placeholder="비밀번호"
                value={this.state.Password}
-               onChange={this.handleChangePW.bind(this)}
+               name="Password"
+               onChange={this.handleChange.bind(this)}
              />
           </div>
-        </form>
           <div>
             <Button
-
             text="로그인"
             click={this.handleClick.bind(this)}/>
           </div>
-          <p>비회원이세요? 바로 시작하기</p>
+          <div className="spanblock">
+            <span className="maintext">비회원이세요? 바로 시작하기</span>
+          </div>
           <div>
             <Button
-
             text="회원가입"/>
           </div>
-          <span>아이디찾기</span>
-          <span>비밀번호찾기</span>
-
-
-
+          <div className="spanblock">
+            <span className="maintext">아이디찾기</span>
+            <span className="maintext">비밀번호찾기</span>
+          </div>
+        </form>
 
         <p onClick={this.handleClick.bind(self)}>
-
-
         id: {this.state.userId} <br/>
         pw: {this.state.Password}
-
-
         </p>
-
       </div>
     )
   }

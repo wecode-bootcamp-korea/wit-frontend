@@ -52,16 +52,16 @@ class Interval extends React.Component {
 
         <div className = "container">
           <div id="first">
-            <p> 팔굽혀 펴기</p>
+            <p className="exname"> 팔굽혀 펴기</p>
           </div>
           <div id="second">
-            <p> 윗몸일으켜기 </p>
+            <p className="exname"> 윗몸일으켜기 </p>
           </div>
           <div id="third">
-            <p>스트레칭 </p>
+            <p className="exname">스트레칭 </p>
           </div>
           <div id="fourth">
-            <p> 도마뱀 </p>
+            <p className="exname"> 도마뱀 </p>
           </div>
         </div>
 
