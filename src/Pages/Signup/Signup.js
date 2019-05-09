@@ -1,5 +1,6 @@
 import React from 'react';
 import './Signup.scss';
+import '../../Style/config.scss'
 import Button from '../../Components/Button/Button'
 
 
@@ -8,9 +9,14 @@ class Signup extends React.Component {
     super();
     this.state  = { //to remember things, component uses state.
       userId: '',
-      Password: '',
-      Nickname: '',
-      text: '' //컴포넌틈 상태 저장해있어야. 텍스트값을 계속변화시킬거임.
+      password: '',
+      rePassword: '',
+      nickname: '',
+      formErrors: {userId: '', Password: ''},
+      emailValid: false,
+      passwordValid: false,
+      formValid: false,
+      pMessage:''
     };
 
     //class를 만들때 항상 거치는 메소드.
@@ -32,78 +38,158 @@ class Signup extends React.Component {
   }
 
   handleClick() {
-    fetch('localhost:8000/signup', {
-      body: {
-        Id: this.state.userId,
-        Pw: this.state.Password,
-        Nn: this.state.Nickname
-      }
-    })
+    fetch('http://localhost:8000/user', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        user_email: this.state.userId,
+        user_password: this.state.password,
+        user_nickname: this.state.nickname
+      }) //rePassword === Password해야만  body로 전달하도록 바꿔야함.
 
+      })
+      .then(response => response.json())
+      .then(response => {
+         console.log(response['message'])
+         if (response.message === 'email already exists') {
+           alert("이미 존재하는 이메일입니다.");
+         }
+
+         //alert("회원가입 성공!");
+      })
+    }
+  handleChange = (e) => {
     this.setState({
-      text:this.state.userId
+      [e.target.name]: e.target.value
     });
-
-  }
-  handleChange(e) {
-    console.log(e.target.value)
-
-    this.setState({
-      userId: e.target.value
-    })
-  }
-  handleChangePW(pw) {
-    this.setState({
-      Password: pw.target.value
-    })
-  }
-  handleChangeNN(nn) {
-    this.setState({
-      Nickname: nn.target.value
-    })
   }
 
+  handleConfirmPassword = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+    console.log('pw', e.target.value === this.state.password, typeof e.target.value, e.target.value.length)
+    if (e.target.value !== this.state.rePassword) {
+      this.setState({
+        pMessage: "비밀번호가 일치하지 않습니다."
+      })
+      console.log("ERROR");
+    }
+    else if (e.target.value === '') {
+      this.setState({
+        pMessage: ''
+      })
+    }
+    else if (e.target.value === this.state.rePassword) {
+      this.setState({
+        pMessage: "비밀번호가 일치합니다."
+      })
+      console.log("OK");
+    }
+}
+  handleConfirmrePassword = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+    console.log('pw', e.target.value === this.state.password, typeof e.target.value, e.target.value.length)
+    if (e.target.value !== this.state.password) {
+      this.setState({
+        pMessage: "비밀번호가 일치하지 않습니다."
+      })
+      console.log("ERROR");
+    }
+    else if (e.target.value === '') {
+      this.setState({
+        pMessage: ''
+      })
+    }
+    else if (e.target.value === this.state.password) {
+      this.setState({
+        pMessage: "비밀번호가 일치합니다."
+      })
+      console.log("OK");
+    }
+}
+
+handleSubmit = (e) => {
+   if (this.state.password !== this.state.rePassword){
+       console.log("The passwords doesn't match")
+       return false; // The form won't submit
+   }
+   else {
+     fetch('http://localhost:8000/user', {
+       method: 'POST',
+       headers: {
+         'Content-Type': 'application/json',
+       },
+       body: JSON.stringify({
+         user_email: this.state.userId,
+         user_password: this.state.password,
+         user_nickname: this.state.Nickname
+       }) //rePassword === Password해야만  body로 전달하도록 바꿔야함.
+
+       })
+       .then(response => response.json())
+       .then(response => {
+          console.log(response['message'])
+          if (response.message === 'email already exists') {
+            alert("이미 존재하는 이메일입니다.");
+          }
+           //alert("회원가입 성공!");
+       });
+   } // The form will submit
+}
   render() {
 
-    let self = this;
     return (
       <div>
-        <form  className="wrapper">
-          <div>
+        <div className="wrapper">
+          <div className="boxposition">
+            <div className="subjectlogsignup">회원가입</div>
+          <div className="inputboxes">
             <input
-               className="idpw-input"
-               type="text"
-               placeholder = "이메일"
-               value={this.state.userId}
-               onChange={this.handleChange.bind(this)}
+              className="idpw-input"
+              name="userId"
+              type="text"
+              placeholder="이메일"
+              value={this.state.userId}
+              onChange={this.handleChange}
             />
-          </div>
-          <div>
              <input
                className="idpw-input"
+               name="password"
                type="password"
                placeholder="비밀번호"
-               value={this.state.Password}
-               onChange={this.handleChangePW.bind(this)}
+               value={this.state.password}
+               onChange={this.handleConfirmPassword}
              />
-          </div>
-          <div>
              <input
                className="idpw-input"
+               name="rePassword"
+               type="password"
+               placeholder="비밀번호 재입력"
+               value={this.state.rePassword}
+               onChange={this.handleConfirmrePassword}
+             />
+             <input
+               className="idpw-input"
+               name="nickname"
                type="text"
                placeholder="닉네임"
-               value={this.state.Nickname}
-               onChange={this.handleChangeNN.bind(this)}
+               value={this.state.nickname}
+               onChange={this.handleChange}
              />
           </div>
-        </form>
-          <div>
+          <p className="maintext">{this.state.pMessage}</p>
+          </div>
+          <div id="blanksignup">
             <Button
             text="계속하기"
-            click={this.handleClick.bind(this)}/>
+            click={this.handleSubmit}/>
           </div>
-
-
+        </div>
       </div>
     )
   }
