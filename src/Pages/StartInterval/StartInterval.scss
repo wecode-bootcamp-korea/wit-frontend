@@ -85,10 +85,7 @@ p#aboutext {
 }
 
 
-body {
-    margin: 0;
-    padding: 0;
-}
+
 .timecontainer {
     margin-left: 20px;
     background: #222;
@@ -112,11 +109,6 @@ body {
 
 
 
-body {
-  height: 100%;
-  width: 100%;
-  background-color: #333;
-}
 
 #countdown {
   position: relative;
@@ -130,24 +122,25 @@ body {
 #countdown-number {
   color: white;
   display: inline-block;
-  line-height: 40px;
+  line-height: 100px;
+  font-size : 100px;
 }
 
 svg {
   position: absolute;
   top: 0;
   right: 0;
-  width: 40px;
-  height: 40px;
+  width: 500px;
+  height: 500px;
   transform: rotateY(-180deg) rotateZ(-90deg);
 }
 
 svg circle {
-  stroke-dasharray: 113px;
+  stroke-dasharray: 114px;
   stroke-dashoffset: 0px;
   stroke-linecap: round;
-  stroke-width: 2px;
-  stroke: white;
+  stroke-width: 14px;
+  stroke: black;
   fill: none;
   animation: countdown 10s linear infinite forwards;
 }

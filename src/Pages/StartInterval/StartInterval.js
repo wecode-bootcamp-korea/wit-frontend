@@ -3,25 +3,30 @@ import './StartInterval.scss';
 
 
 class Interval extends React.Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     countdown: 10
-  //   }
-  // }
+  constructor() {
+    super();
+    this.state = {
+      action_choice: 180000,
+      break_choice : 10,
+      set_choice: 3,
+    }
+  }
+
+  componentDidMount() {
+    const intervalID = setInterval(() => {
+
+      if (this.state.action_choice ===1) {
+        clearInterval(intervalID);
+      }
+      this.setState({
+        action_choice: Math.floor((this.state.action_choice % (1000 * 60)) / 1000)
+
+      })
+    }, 1000);
+  }
+
 
   render() {
-
-    // let countdownNumberEl = document.getElementById('countdown-number');
-    // let countdown = 10;
-
-    // countdownNumberEl.textContent = countdown;
-    //
-    // setInterval(function() {
-    //   countdown = --countdown <= 0 ? 10 : countdown;
-    //   countdownNumberEl.textContent = countdown;
-    // }, 1000);
-
 
     return (
       <div>
@@ -52,11 +57,24 @@ class Interval extends React.Component {
           </div>
         </div>
         <div>
+          <div className="timecontainer">
+           <p id="timer">
+               <span id="timer-mins"></span>
+               <span id="timer-secs"></span>
+               <span id="timer-msec"></span>
+           </p>
+          </div>
+        </div>
+
+        <div>
           <div id="countdown">
-            <div id="countdown-number"></div>
-              {this.state.countdown}
+            <div id="countdown-number">
+              // <span id="timer-secs"></span>
+            </div>
+              {this.state.action_choice}
+
             <svg>
-              <circle r="18" cx="20" cy="20"></circle>
+              <circle r="200" cx="400" cy="400"></circle>
             </svg>
           </div>
         </div>
