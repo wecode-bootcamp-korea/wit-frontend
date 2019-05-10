@@ -1,0 +1,43 @@
+.top-bar {
+  background-color: #161626;
+  height: 60px;
+  margin:0;
+}
+.unify-text {
+  color: white;
+  text-align: center;
+  margin: 0;
+  padding: 15px;
+  font-size: 18px;
+}
+
+.back-ground {
+  background-color: #10101C;
+}
+
+.dot {
+  height: 95px;
+  width: 95px;
+  background-color: #565662;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 20px;
+  margin-top: 20px;
+
+}
+
+.active .dot {
+background-color: #D5FF45;
+
+}
+
+.ex-text {
+  color: white;
+  font-size: 12px;
+  margin-left: 20px;
+  margin-top: 5px;
+
+}
+.blocking {
+  display: inline-block;
+}
