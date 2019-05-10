@@ -10,7 +10,10 @@
   margin-right: 25px;
   margin-block-start: none;
   margin-top: 0px;
+}
 
+.button-up:hover {
+  color: #D5FF45;
 }
 
 .back-ground {
@@ -26,22 +29,19 @@
   text-align: center;
   font-size: 20px;
 }
-.time {
-  color:#898991;
+
+.toptimer{
   text-align: center;
-  margin:0;
-  font-size: 17px;
 }
 
-.clock {
-  height: 202px;
-  width: 202px;
-  background-color: #D5FF45;
-  border-radius: 50%;
+.time {
+  color:#898991;
+  margin-top:0;
+  font-size: 17px;
   display: inline-block;
-  margin-left: 85px;
-  margin-top: 33px;
 }
+
+
 .ticking {
   font-size: 66px;
   color: #FFFFFF;
@@ -54,7 +54,7 @@
   width: 30px;
   height: 30px;
   margin-top: 20px;
-  margin-left: 50%;
+  margin-left: 46%;
 }
 
 .active .stopbutton  {
@@ -70,36 +70,21 @@
 }
 
 .totaltime {
+  margin-left: 5px;
   font-size: 26px;
   color:#FFFFFF;
-  maring-top: 60px;
   font-weight: bold;
+  display: inline-block;
 }
 
+.totalset {
+  margin-left: 220px;
+  font-size: 26px;
+  color:#FFFFFF;
+  font-weight: bold;
+  display: inline-block;
 
-
-
-
-
-.exname {
-  text-align: center;
-  color: black;
-  font-size: 20px;
 }
-
-
-
-
-#timer {
-    color: #fff;
-    font-size: 4rem;
-}
-.label {
-    font-size: 2.5rem;
-    padding-left: 0.25rem;
-}
-
-
 
 
 #countdown {
@@ -111,30 +96,22 @@
   text-align: center;
 }
 
-#countdown-number {
-  color: white;
-  display: inline-block;
-  line-height: 100px;
-  font-size : 100px;
-}
-
 svg {
-  position: absolute;
   top: 0;
   right: 0;
-  width: 500px;
-  height: 500px;
+  width: 60px;
+  height: 60px;
   transform: rotateY(-180deg) rotateZ(-90deg);
 }
 
 svg circle {
-  stroke-dasharray: 114px;
+  stroke-dasharray: 113px;
   stroke-dashoffset: 0px;
   stroke-linecap: round;
-  stroke-width: 14px;
-  stroke: black;
+  stroke-width: 1.5px;
+  stroke: #D5FF45;
   fill: none;
-  animation: countdown 10s linear infinite forwards;
+  animation: countdown 4.7s ;
 }
 
 @keyframes countdown {
