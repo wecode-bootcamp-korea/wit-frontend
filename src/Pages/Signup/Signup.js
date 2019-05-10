@@ -127,7 +127,7 @@ handleSubmit = (e) => {
        body: JSON.stringify({
          user_email: this.state.userId,
          user_password: this.state.password,
-         user_nickname: this.state.Nickname
+         user_nickname: this.state.nickname
        }) //rePassword === Password해야만  body로 전달하도록 바꿔야함.
 
        })
