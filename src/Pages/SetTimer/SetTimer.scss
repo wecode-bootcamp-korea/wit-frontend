@@ -1,0 +1,81 @@
+@import '../../Style/config';
+
+
+.extitle {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 80px;
+}
+
+.title {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 80px;
+  position: absolute;
+  top: 20px;
+  left: 10px;
+}
+.timerbox {
+  width : 100%;
+  height: 70px;
+  font-size: 17px;
+  position: relative;
+  margin-top: 5px;
+  padding: 11px 10px 0px 13px;
+  // margin: 5px;
+  background-color: $backgroundcl;
+  border: none;
+  color: $bordercl;
+  font-weight: bold;
+  border-bottom: 1px solid $bordercl;
+}
+.timeset {
+  width: 115px;
+  height: 47px;
+  position: absolute;
+  padding: 9px 35px 13px 32px;
+  font-size: 20px;
+  color: $buttoncl;
+  border: 1px solid $buttoncl;
+  top: 10px;
+  right: 10px;
+  text-align: center;
+}
+
+.timTimeset {
+  -webkit-appearance: none;
+  width: 115px !important;
+  height: 47px;
+  position: absolute;
+  padding: 9px 35px 13px 32px;
+  font-size: 20px;
+  color: $buttoncl;
+  top: 10px;
+  right: 10px;
+  text-align: center;
+  background: transparent;
+  border: none;
+}
+.timbtnmi {
+  font-size: 28px;
+  color: $buttoncl;
+  position: absolute;
+  left: 25px;
+  top: 0px;
+}
+.timbtnpl {
+  font-size: 23px;
+  margin-top: -4px;
+  right: 25px;
+  position: absolute;
+  color: $buttoncl;
+}
+.setResult {
+  margin: 14px 28px 14px 14px;
+  color: white;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
+}
