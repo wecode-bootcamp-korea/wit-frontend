@@ -3,37 +3,24 @@ import './StartInterval.scss';
 
 
 class Interval extends React.Component {
-
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     countdown: 10
+  //   }
+  // }
 
   render() {
 
-    var endDate = new Date("Mar 15, 2020 12:00:00").getTime();
-    var timer = setInterval(function() {
+    // let countdownNumberEl = document.getElementById('countdown-number');
+    // let countdown = 10;
 
-        let now = new Date().getTime();
-        let t = endDate - now;
-
-        if (t >= 0) {
-
-            let mins = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
-            let secs = Math.floor((t % (1000 * 60)) / 1000);
-            let msec = Math.floor((t % (1000)));
-
-
-            document.getElementById("timer-mins").innerHTML = ("0"+mins).slice(-2) +
-            "<span class='label'>분</span>";
-
-            document.getElementById("timer-secs").innerHTML = ("0"+secs).slice(-2) +
-            "<span class='label'>초</span>";
-
-            document.getElementById("timer-msec").innerHTML = ("0"+msec).slice(-3) +
-            "<span class='label'>밀리초</span>";
-
-        } else {
-            document.getElementById("timer").innerHTML = "The countdown is over!";
-        }
-
-    }, 1000);
+    // countdownNumberEl.textContent = countdown;
+    //
+    // setInterval(function() {
+    //   countdown = --countdown <= 0 ? 10 : countdown;
+    //   countdownNumberEl.textContent = countdown;
+    // }, 1000);
 
 
     return (
@@ -64,14 +51,15 @@ class Interval extends React.Component {
             <p className="exname"> 도마뱀 </p>
           </div>
         </div>
-
-          <div className="timecontainer">
-            <p id="timer">
-                <span id="timer-mins"></span>
-                <span id="timer-secs"></span>
-                <span id="timer-msec"></span>
-            </p>
+        <div>
+          <div id="countdown">
+            <div id="countdown-number"></div>
+              {this.state.countdown}
+            <svg>
+              <circle r="18" cx="20" cy="20"></circle>
+            </svg>
           </div>
+        </div>
         <div className="youtube">
           <iframe width="560" height="315" src="https://www.youtube.com/embed/-P01D-1vFJo"
                   frameborder="0"
