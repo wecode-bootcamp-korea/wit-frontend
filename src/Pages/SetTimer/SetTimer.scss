@@ -44,6 +44,34 @@
   text-align: center;
 }
 
+.timeUsermin {
+  width: 57px;
+  height: 47px;
+  display: inline-block;
+  padding: 9px 35px 13px 32px;
+  background: none;
+  font-size: 20px;
+  color: $buttoncl;
+  border: 1px solid $buttoncl;
+  top: 10px;
+  right: 67px;
+  position: absolute;
+  text-align: center;
+}
+.timeUsersec {
+  width: 57px;
+  height: 47px;
+  display: inline-block;
+  padding: 9px 35px 13px 32px;
+  background: white;
+  font-size: 20px;
+  color: $buttoncl;
+  border: 1px solid $buttoncl;
+  top: 10px;
+  right: 10px;
+  position: absolute;
+  text-align: center;
+}
 .timTimeset {
   -webkit-appearance: none;
   width: 115px !important;
@@ -64,14 +92,30 @@
   position: absolute;
   left: 25px;
   top: 0px;
+  cursor: pointer;
 }
 .timbtnpl {
   font-size: 23px;
-  margin-top: -4px;
-  right: 25px;
-  position: absolute;
   color: $buttoncl;
+  position: absolute;
+  right: 22px;
+  top: 6px;
+  cursor: pointer;
+
 }
+
+.setNum {
+  position: absolute;
+  padding: 9px 35px 13px 32px;
+  font-size: 20px;
+  color: #D5FF45;
+  border: 1px solid #D5FF45;
+  top: 10px;
+  right: 10px;
+  text-align: center;
+}
+
+
 .setResult {
   margin: 14px 28px 14px 14px;
   color: white;
