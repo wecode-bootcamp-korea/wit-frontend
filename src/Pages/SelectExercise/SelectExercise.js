@@ -2,16 +2,18 @@ import React from 'react';
 import Selectcircle   from '../../Components/Selectcircle/Selectcircle';
 import './SelectExercise.scss';
 
+
 const list = [{name: '달리기'}, {name:'푸쉬업'}, {name:'달리기'},
               {name:'스쿼트'},{name:'테니스'}, {name:'박여나'},
               {name:'김민수'},{name:'캬하하'}, {name:'이숭준'},
               {name:'네네네'},{name:'뭅뭅'}, {name:'위코드'},
-
-
-
 ];
 
 class Choice extends React.Component {
+
+
+
+
 
   render() {
     return (
