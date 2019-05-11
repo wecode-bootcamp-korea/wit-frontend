@@ -13,8 +13,6 @@ const list = [{name: '달리기'}, {name:'푸쉬업'}, {name:'달리기'},
 
 class Choice extends React.Component {
 
-
-
   render() {
     return (
       <div>
@@ -35,7 +33,7 @@ class Choice extends React.Component {
         </div>
         // 아래부터는 선택한 운동값을 받아와서 보여주기
         <div>
-  
+
         </div>
 
       </div>

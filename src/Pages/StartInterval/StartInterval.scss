@@ -1,113 +1,90 @@
-.globaltab {
-  height: 20px;
-  background-color: black;
-}
-p#globalogo {
-  margin-top:0;
-  color: white;
-  text-align: left;
-  font-size:14px;
-}
 
-.upperbox {
-  height: 60px;
-  background-color: rgb(103, 106, 105);
+.top-bar{
+  padding-top: 15px;
+}
+.button-up {
+  color: #FFFFFF;
+  font-size: 16px;
+  text-align: right;
+  font-weight: bold;
+  margin-right: 25px;
   margin-block-start: none;
+  margin-top: 0px;
 }
 
-p#aboutext {
-  color: white;
-  font-size: 120%;
-  text-align: left;
+.button-up:hover {
+  color: #D5FF45;
 }
 
-.container {
-    margin-top: 10px;
-    width: 100%;
-}
-
-#first {
-    width: 23%;
-    height: 120px;
-    margin-left: 20px;
-    margin-right: 10px;
-    display: inline-block;
-    border-radius: 20px;
-    border: 4px solid rgb(47, 48, 55);
-
-}
-#second {
-    width: 23%;
-    height: 120px;
-    margin : 0;
-    display: inline-block;
-    border-radius: 20px;
-    border: 4px solid rgb(47, 48, 55);
-    margin-right: 10px;
-
-}
-#third {
-    width: 23%;
-    height: 120px;
-    margin : 0;
-    display: inline-block;
-    border-radius: 20px;
-    border: 4px solid rgb(47, 48, 55);
-
-    margin-right: 10px;
-
-}
-#fourth {
-    width: 23%;
-    height: 120px;
-    margin : 0;
-    display: inline-block;
-    border-radius: 20px;
-    border: 4px solid rgb(47, 48, 55);
-    margin-right: 10px;
-
-
+.back-ground {
+  background-color: #10101C;
+  margin-block-start: none;
 
 }
 
-.exname {
+.current-ex{
+  margin-bottom: 0;
+  margin-top:0;
+  color: #FFFFFF;
   text-align: center;
-  color: black;
   font-size: 20px;
 }
 
-.youtube {
-  float:right;
-  margin-right: 63px;
+.toptimer{
+  text-align: center;
+}
+
+.time {
+  color:#898991;
+  margin-top:0;
+  font-size: 17px;
+  display: inline-block;
+}
+
+
+.ticking {
+  font-size: 66px;
+  color: #FFFFFF;
+  text-align: center;
+  margin-top:10px;
+  margin-bottom:0;
+}
+
+.kingofbutton {
+  width: 30px;
+  height: 30px;
   margin-top: 20px;
+  margin-left: 46%;
+}
+
+.active .stopbutton  {
+  background-color: #D5FF45;
+}
+
+.stopbutton {
+  width: 8px;
+  height:25px;
+  background-color: #565662;
+  margin: 3px;
+  display: inline-block;
+}
+
+.totaltime {
+  margin-left: 5px;
+  font-size: 26px;
+  color:#FFFFFF;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.totalset {
+  margin-left: 220px;
+  font-size: 26px;
+  color:#FFFFFF;
+  font-weight: bold;
   display: inline-block;
 
 }
-
-
-
-.timecontainer {
-    margin-left: 20px;
-    background: #222;
-    width: 600px;
-    height: 315px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    display: inline-block;
-
-}
-#timer {
-    color: #fff;
-    font-size: 4rem;
-}
-.label {
-    font-size: 2.5rem;
-    padding-left: 0.25rem;
-}
-
-
 
 
 #countdown {
@@ -119,30 +96,22 @@ p#aboutext {
   text-align: center;
 }
 
-#countdown-number {
-  color: white;
-  display: inline-block;
-  line-height: 100px;
-  font-size : 100px;
-}
-
 svg {
-  position: absolute;
   top: 0;
   right: 0;
-  width: 500px;
-  height: 500px;
+  width: 60px;
+  height: 60px;
   transform: rotateY(-180deg) rotateZ(-90deg);
 }
 
 svg circle {
-  stroke-dasharray: 114px;
+  stroke-dasharray: 113px;
   stroke-dashoffset: 0px;
   stroke-linecap: round;
-  stroke-width: 14px;
-  stroke: black;
+  stroke-width: 1.5px;
+  stroke: #D5FF45;
   fill: none;
-  animation: countdown 10s linear infinite forwards;
+  animation: countdown 4.7s ;
 }
 
 @keyframes countdown {
