@@ -76,27 +76,22 @@ p#aboutext {
   font-size: 20px;
 }
 
-.youtube {
-  float:right;
-  margin-right: 63px;
-  margin-top: 20px;
+.totaltime {
+  margin-left: 7.5px;
+  font-size: 26px;
+  color:#FFFFFF;
+  font-weight: bold;
   display: inline-block;
 
 }
 
 
-
-.timecontainer {
-    margin-left: 20px;
-    background: #222;
-    width: 600px;
-    height: 315px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    display: inline-block;
-
+.totalset {
+  margin-left: 180px;
+  font-size: 26px;
+  color:#FFFFFF;
+  font-weight: bold;
+  display: inline-block;
 }
 #timer {
     color: #fff;
