@@ -108,19 +108,39 @@ class Interval extends React.Component {
     clearInterval(this.totalID)
     clearInterval(this.actsetID)
   }
+  handleclick() {
+  if (this.state.clicked===false) {
+    this.stop();
+    this.setState({clicked: true})
+
+  }
+  else if (this.state.clicked===true){
+    this.start();
+    this.setState({clicked: false})
+  }
+}
 
   render() {
 
     return (
       <div>
-        <div>
-          <div className ="globaltab">
-            <p id="globalogo"> WE:Interval Train</p>
-          </div>
+        <div className="top-bar">
+            <p className="button-up"> DONE </p>
+        </div>
+        <div className="back-ground">
+          <div>
+            <p className="current-ex"> {this.state.current_ex} </p>
+            <div className="toptimer">
+              <p className="time"> {Math.floor(this.state.act_set_time/60)}:</p>
+              <p className="time"> {this.state.act_set_time-Math.floor(this.state.act_set_time/60)*60} </p>
+            </div>
+            <div id="countdown">
 
-          <div className = "upperbox">
-            <div id="status">
-              <p id="aboutext"> 운동 진행 </p>
+              <div className="clock">
+                <svg>
+                  <circle r="18" cx="31" cy="31"></circle>
+                </svg>
+              </div>
             </div>
             <p className="ticking">
                 {this.state.action_time}
@@ -135,21 +155,9 @@ class Interval extends React.Component {
             <div>
               <p className="totaltime"> {Math.floor(this.state.total_time/60)} :</p>
               <p className="totaltime"> {this.state.total_time-Math.floor(this.state.total_time/60)*60} </p>
-              <p className="totalset"> {this.state.actual_set} / {this.state.total_set} </p>
+              <p className="totalset"> / {this.state.total_set}</p>
             </div>
-              {this.state.action_choice}
-
-            <svg>
-              <circle r="200" cx="400" cy="400"></circle>
-            </svg>
           </div>
-        </div>
-        <div className="youtube">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/-P01D-1vFJo"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen>
-          </iframe>
         </div>
       </div>
 
