@@ -14,7 +14,11 @@ class Selectcircle extends React.Component {
 
 
 goToSettimer() {
-  this.props.history.push('/settimer');
+  this.props.history.push({
+      pathname: '/settimer',
+      state: {name: this.props.info.name}
+
+  });
 }
 
   render() {
