@@ -1,38 +1,17 @@
-$green: #1d6a43;
+@import '../../Style/config';
+
 * {
   box-sizing: border-box;
 }
 
-.wrapper {
-  position: relative;
-  width: 308px;
-  
-}
+
 .spanblock {
   text-align: center;
 }
-.maintext {
 
-  margin: 10px;
-  color: black;
-}
-.box, .idpw-input {
-  width : 298px;
-  height: 45px;
-  font-size: 16px;
-  padding: 11px 10px 11px 13px;
-  margin: 10px;
-  border: 2px solid black;
-}
-
-.login-id-input {
-  color: red;
-  font-size: 20px;
-  padding: 10px 20px;
+#blanklogin {
   margin: 100px;
-  border: 2px solid black;
 }
-
 
 .login-password-input {
   color: red;

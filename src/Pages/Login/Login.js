@@ -8,7 +8,7 @@ class Login extends React.Component {
     this.state  = { //to remember things, component uses state.
       userId: '',
       Password: '',
-      text: 'loginpage..' //컴포넌틈 상태 저장해있어야. 텍스트값을 계속변화시킬거임.
+       //컴포넌틈 상태 저장해있어야. 텍스트값을 계속변화시킬거임.
     };
 
     //class를 만들때 항상 거치는 메소드.
@@ -31,23 +31,30 @@ class Login extends React.Component {
 
   handleClick() {
 
-    fetch('localhost:8000/login', {
-      method: 'POST',
+    fetch('http://localhost:8000/user/signin', {
+      method:'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        Id: this.state.userId,
-        Pw: this.state.Password
+        user_email: this.state.userId,
+        user_password: this.state.Password
+
       })
     })
-
-    console.log(this);
-    this.setState({
-      text:this.state.userId
-    });
-
+    .then(response => response.json())
+    .then(response => {
+      console.log(response.access_token);
+      if (response.access_token) {
+        localStorage.setItem('wit-token', response.access_token);
   }
+
+      if (response.success) {
+        alert('로그인이 완료되었습니다!');
+  }
+})
+
+}
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
@@ -60,11 +67,13 @@ class Login extends React.Component {
   // }
   render() {
 
+
     let self = this;
     return (
-      <div>
-        <form className="wrapper">
-          <div>
+      <div className="wrapper">
+        <div className="boxposition">
+            <div className="subjectlogsignup">로그인</div>
+          <div className="inputboxes">
             <input
                className="idpw-input"
                type="text"
@@ -73,8 +82,6 @@ class Login extends React.Component {
                name="userId"
                onChange={this.handleChange.bind(this)}
             />
-          </div>
-          <div>
              <input
                className="idpw-input"
                type="password"
@@ -84,13 +91,14 @@ class Login extends React.Component {
                onChange={this.handleChange.bind(this)}
              />
           </div>
+          <div id="blanklogin"></div>
           <div>
             <Button
             text="로그인"
             click={this.handleClick.bind(this)}/>
           </div>
           <div className="spanblock">
-            <span className="maintext">비회원이세요? 바로 시작하기</span>
+            <span className="maintext">비회원으로 시작하기</span>
           </div>
           <div>
             <Button
@@ -100,7 +108,7 @@ class Login extends React.Component {
             <span className="maintext">아이디찾기</span>
             <span className="maintext">비밀번호찾기</span>
           </div>
-        </form>
+        </div>
 
         <p onClick={this.handleClick.bind(self)}>
         id: {this.state.userId} <br/>

@@ -1,6 +1,47 @@
 import React from 'react';
 import './StartInterval.scss';
 
+const user = [{name: '달리기', action_time: 310, break_time: 10, set: 4},
+              {name: '스쿼트', action_time: 180, break_time: 20, set: 2},
+              {name: '런지', action_time: 20, break_time: 10, set: 2},
+              {name: '자전거돌리기', action_time: 60, break_time: 50, set: 5},
+              {name: '물구나무서기', action_time: 10, break_time: 60, set: 3}
+            ]
+
+function getTotal(user) {
+  let total = 0;
+  for (var i=0; i < user.length; i++) {
+    total += (user[i].action_time * user[i].set) + user[i].break_time;
+  }
+  return total;
+}
+
+function getSetTotal(user) {
+  let set_total =0;
+  for (var i=0; i <user.length; i++) {
+    set_total += user[i].set;
+  }
+  return set_total;
+}
+
+function getTimeByEx(user) {
+  let temp=[];
+  let ex_tot=0;
+  for (var i=0; i <user.length; i++) {
+    ex_tot += user[i].action_time * user[i].set
+    temp.push(ex_tot);
+  }
+  return temp;
+}
+
+function getExName(user) {
+  let temp=[];
+  for (var i=0; i <user.length; i++) {
+    temp.push(user[i].name);
+  }
+  return temp;
+}
+
 
 const user = [{name: '달리기', action_time: 200, break_time: 10, set: 4},
               {name: '스쿼트', action_time: 180, break_time: 20, set: 2},
@@ -68,11 +109,11 @@ class Interval extends React.Component {
   componentDidMount() {
     this.start();
   }
+
   componentWillUnmount() {
     clearInterval(this.intervalID)
     clearInterval(this.totalID)
     clearInterval(this.actsetID)
-
   }
 
   start() {
@@ -101,6 +142,7 @@ class Interval extends React.Component {
         act_set_time:this.state.act_set_time - 1
       })
     },1000);
+
   }
 
   stop() {
@@ -108,17 +150,18 @@ class Interval extends React.Component {
     clearInterval(this.totalID)
     clearInterval(this.actsetID)
   }
+  
   handleclick() {
-  if (this.state.clicked===false) {
-    this.stop();
-    this.setState({clicked: true})
+    if (this.state.clicked===false) {
+      this.stop();
+      this.setState({clicked: true})
 
+    }
+    else if (this.state.clicked===true){
+      this.start();
+      this.setState({clicked: false})
+    }
   }
-  else if (this.state.clicked===true){
-    this.start();
-    this.setState({clicked: false})
-  }
-}
 
   render() {
 
