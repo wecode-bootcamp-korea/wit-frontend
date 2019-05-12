@@ -14,11 +14,15 @@ class Selectcircle extends React.Component {
 
 
 goToSettimer() {
+
   this.props.history.push({
       pathname: '/settimer',
-      state: {name: this.props.info.name}
-
+      state: {name: this.props.info.name,
+              action_time: this.props.info.action_time,
+              break_time: this.props.info.break_time,
+              set: this.props.info.set}
   });
+  console.log("운동정보가 웹상에 전달되는지 확인: 보이면 된것임")
 }
 
   render() {

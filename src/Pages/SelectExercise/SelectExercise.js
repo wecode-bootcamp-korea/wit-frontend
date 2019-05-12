@@ -2,7 +2,7 @@ import React from 'react';
 import Selectcircle   from '../../Components/Selectcircle/Selectcircle';
 import Selectedcircle   from '../../Components/Selectedcircle/Selectedcircle';
 import './SelectExercise.scss';
-
+import SetTimer from '../SetTimer/SetTimer';
 
 const default_list = [{name: '달리기', action_time: 120, break_time: 10, set: 4},
                       {name: '스쿼트', action_time: 180, break_time: 20, set: 7},
@@ -48,13 +48,6 @@ class Choice extends React.Component {
   }
 }
 
-  // clickledButton() {
-  //   for (var i=0; i < tmp.length; i++) {
-  //     if (tmp[i].name in list)
-  //   }
-  //   })
-  // }
-
   render() {
     return (
       <div>
@@ -76,9 +69,9 @@ class Choice extends React.Component {
           <div>
             {select_list.map((el) => {
               return (<Selectedcircle info={el}/>)})}
-          <div className="startbutton">
+          <button className="startbutton">
             <p className="startbutton-text">START</p>
-          </div>
+          </button>
           <div>
             <p className= "selected_text">Action. {this.state.total_set} </p>
             <p className= "selected_text">TIME. {this.state.total_time} </p>
