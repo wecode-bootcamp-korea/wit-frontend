@@ -8,7 +8,7 @@
   font-weight: bold;
   margin-right: 25px;
   margin-block-start: none;
-  margin-top: 0px;
+  margin-top: 3px;
 }
 
 .button-up:hover {
@@ -18,7 +18,7 @@
 .back-ground {
   background-color: #10101C;
   margin-block-start: none;
-
+  padding-top: 80px
 }
 
 .current-ex{
@@ -26,7 +26,7 @@
   margin-top:0;
   color: #FFFFFF;
   text-align: center;
-  font-size: 20px;
+  font-size: 30px;
 }
 
 .toptimer{
@@ -36,24 +36,24 @@
 .time {
   color:#898991;
   margin-top:0;
-  font-size: 17px;
+  font-size: 23px;
   display: inline-block;
 }
 
 
 .ticking {
-  font-size: 66px;
+  font-size: 70px;
   color: #FFFFFF;
   text-align: center;
-  margin-top:10px;
+  margin-top:29px;
   margin-bottom:0;
 }
 
 .kingofbutton {
   width: 30px;
   height: 30px;
-  margin-top: 20px;
-  margin-left: 46%;
+  display: flex;
+  margin: auto;
 }
 
 .active .stopbutton  {
@@ -85,39 +85,43 @@
 
 }
 
-
-#countdown {
-  position: relative;
+.countdown-clock {
+  height: 220px;
+  width: 220px;
+  border-radius: 50%;
+  background-color: #D5FF45;
+  display: flex;
   margin: auto;
-  margin-top: 100px;
-  height: 40px;
-  width: 40px;
-  text-align: center;
+}
+.clock-div{
+  padding-top: 20px;
 }
 
-svg {
-  top: 0;
-  right: 0;
-  width: 60px;
-  height: 60px;
-  transform: rotateY(-180deg) rotateZ(-90deg);
+.button-wrapper {
+  padding-top: 25px;
 }
 
-svg circle {
-  stroke-dasharray: 113px;
-  stroke-dashoffset: 0px;
-  stroke-linecap: round;
-  stroke-width: 1.5px;
-  stroke: #D5FF45;
-  fill: none;
-  animation: countdown 4.7s ;
+.total-status-wrapper{
+  padding-top: 80px;
+  display: inline-block;
 }
 
-@keyframes countdown {
-  from {
-    stroke-dashoffset: 0px;
-  }
-  to {
-    stroke-dashoffset: 113px;
-  }
+.total-status {
+  margin-left: 15px;
+  display: flex;
+}
+
+.temporal-circle{
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: #D5FF45;
+  display: inline-block;
+  margin-left: 5px;
+
+}
+.temporal-circle-wrapper{
+  display: inline-block;
+  padding-top: 27px;
+  padding-left: 30px;
 }

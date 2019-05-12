@@ -1,11 +1,11 @@
 import React from 'react';
 import './StartInterval.scss';
 
-const user = [{name: '달리기', action_time: 200, break_time: 10, set: 4},
-              {name: '스쿼트', action_time: 180, break_time: 20, set: 2},
-              {name: '런지', action_time: 20, break_time: 10, set: 2},
-              {name: '자전거돌리기', action_time: 60, break_time: 50, set: 5},
-              {name: '물구나무서기', action_time: 10, break_time: 60, set: 3}
+const user = [{name: '달리기', action_time: 200, break_time: 10, set: 15},
+              {name: '스쿼트', action_time: 180, break_time: 20, set: 23},
+              {name: '런지', action_time: 20, break_time: 10, set: 32},
+              {name: '자전거돌리기', action_time: 60, break_time: 50, set: 15},
+              {name: '물구나무서기', action_time: 10, break_time: 60, set: 33}
             ]
 
 function getTotal(user) {
@@ -54,6 +54,7 @@ class Interval extends React.Component {
   constructor() {
     super();
     this.state = {
+      index: 0,
       total_time: getTotal(user),
       act_set_time: getTimeByEx(user)[0],
       action_time: user[0].action_time,
@@ -67,11 +68,11 @@ class Interval extends React.Component {
   componentDidMount() {
     this.start();
   }
-
   componentWillUnmount() {
     clearInterval(this.intervalID)
     clearInterval(this.totalID)
     clearInterval(this.actsetID)
+
   }
 
   start() {
@@ -82,6 +83,7 @@ class Interval extends React.Component {
         this.setState({
           actual_set:this.state.actual_set + 1
         })
+
 
        }
       this.setState({
@@ -99,8 +101,7 @@ class Interval extends React.Component {
       this.setState({
         act_set_time:this.state.act_set_time - 1
       })
-    },1000);
-
+    },10);
   }
 
   stop() {
@@ -108,18 +109,17 @@ class Interval extends React.Component {
     clearInterval(this.totalID)
     clearInterval(this.actsetID)
   }
-  
   handleclick() {
-    if (this.state.clicked===false) {
-      this.stop();
-      this.setState({clicked: true})
+  if (this.state.clicked===false) {
+    this.stop();
+    this.setState({clicked: true})
 
-    }
-    else if (this.state.clicked===true){
-      this.start();
-      this.setState({clicked: false})
-    }
   }
+  else if (this.state.clicked===true){
+    this.start();
+    this.setState({clicked: false})
+  }
+}
 
   render() {
 
@@ -135,28 +135,41 @@ class Interval extends React.Component {
               <p className="time"> {Math.floor(this.state.act_set_time/60)}:</p>
               <p className="time"> {this.state.act_set_time-Math.floor(this.state.act_set_time/60)*60} </p>
             </div>
-            <div id="countdown">
-
-              <div className="clock">
-                <svg>
-                  <circle r="18" cx="31" cy="31"></circle>
-                </svg>
+            <div className="clock-div">
+              <div className="countdown-clock">
               </div>
             </div>
             <p className="ticking">
-                {this.state.action_time}
+                {Math.floor(this.state.act_set_time/60)}
             </p>
+            <div className="button-wrapper">
               <div className={`kingofbutton ${this.state.clicked ? 'active' : ''}`}
                 onClick={this.handleclick.bind(this)}>
-              <div className="stopbutton">
-              </div>
-              <div className="stopbutton">
+                <div className="stopbutton">
+                </div>
+                <div className="stopbutton">
+                </div>
               </div>
             </div>
-            <div>
-              <p className="totaltime"> {Math.floor(this.state.total_time/60)} :</p>
-              <p className="totaltime"> {this.state.total_time-Math.floor(this.state.total_time/60)*60} </p>
-              <p className="totalset"> / {this.state.total_set}</p>
+            <div className="total-status-wrapper">
+              <div className="total-status">
+                <p className="totaltime"> {Math.floor(this.state.total_time/60)} :</p>
+                <p className="totaltime"> {this.state.total_time-Math.floor(this.state.total_time/60)*60} </p>
+                <div className="temporal-circle-wrapper">
+                  <div className="temporal-circle">
+                  </div>
+                  <div className="temporal-circle">
+                  </div>
+                  <div className="temporal-circle">
+                  </div>
+                  <div className="temporal-circle">
+                  </div>
+                  <div className="temporal-circle">
+                  </div>
+                  <div className="temporal-circle">
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
