@@ -1,19 +1,59 @@
 import React from 'react';
 import Selectcircle   from '../../Components/Selectcircle/Selectcircle';
+import Selectedcircle   from '../../Components/Selectedcircle/Selectedcircle';
 import './SelectExercise.scss';
 
 
-const list = [{name: '달리기'}, {name:'푸쉬업'}, {name:'달리기'},
-              {name:'스쿼트'},{name:'테니스'}, {name:'박여나'},
-              {name:'김민수'},{name:'캬하하'}, {name:'이숭준'},
-              {name:'네네네'},{name:'뭅뭅'}, {name:'위코드'},
-];
+const default_list = [{name: '달리기', action_time: 120, break_time: 10, set: 4},
+                      {name: '스쿼트', action_time: 180, break_time: 20, set: 7},
+                      {name: '런지', action_time: 800, break_time: 10, set: 8},
+                      {name: '자전거돌리기', action_time: 60, break_time: 50, set: 5},
+                      {name: '물구나무서기', action_time: 40, break_time: 60, set: 3},
+                      {name: '사이드런지', action_time: 120, break_time: 10, set: 4},
+                      {name: '윗몸일으키기', action_time: 180, break_time: 20, set: 7},
+                      {name: '스트레칭', action_time: 800, break_time: 10, set: 8},
+                      {name: '앉았다뛰기', action_time: 60, break_time: 50, set: 5},
+                      {name: '딥스', action_time: 120, break_time: 10, set: 4},
+                      {name: '요가자세', action_time: 180, break_time: 20, set: 7},
+                      {name: '알영', action_time: 800, break_time: 10, set: 8}];
+
+const select_list = [{name: '달리기', action_time: 120, break_time: 10, set: 4},
+                      {name: '앉았다뛰기', action_time: 180, break_time: 20, set: 7},
+                      {name: '스트레칭', action_time: 800, break_time: 10, set: 8},
+                      {name: '사이드런지', action_time: 60, break_time: 50, set: 5},
+                      {name: '딥스', action_time: 40, break_time: 60, set: 3}];
+
+
+function getTotal(select_list) {
+  let total = 0;
+  for (var i=0; i < select_list.length; i++) {
+    total += (select_list[i].action_time * select_list[i].set) + select_list[i].break_time;
+  }
+  return total;
+}
+
+function getExTotal(select_list) {
+  return select_list.length;
+}
 
 class Choice extends React.Component {
 
+  constructor() {
+  super();
 
+  this.state = {
+    clicked: false,
+    total_time: getTotal(select_list),
+    total_set: getExTotal(select_list)
+  }
+}
 
-
+  // clickledButton() {
+  //   for (var i=0; i < tmp.length; i++) {
+  //     if (tmp[i].name in list)
+  //   }
+  //   })
+  // }
 
   render() {
     return (
@@ -24,22 +64,32 @@ class Choice extends React.Component {
 
           <div className="back-ground">
 
-          {list.map((el) => {
+          {default_list.map((el) => {
             return (
                 <Selectcircle
                   info={el}
                 />
-            )
-          })}
-
-        </div>
-        // 아래부터는 선택한 운동값을 받아와서 보여주기
-        <div>
-
+            )})}
         </div>
 
+        <div className="result-tab">
+          <div>
+            {select_list.map((el) => {
+              return (<Selectedcircle info={el}/>)})}
+          <div className="startbutton">
+            <p className="startbutton-text">START</p>
+          </div>
+          <div>
+            <p className= "selected_text">Action. {this.state.total_set} </p>
+            <p className= "selected_text">TIME. {this.state.total_time} </p>
+            <p className= "selected_text">Kcal. {this.state.total_time} </p>
+          </div>
+          <div>
+
+            </div>
+          </div>
+        </div>
       </div>
-
     )
   }
 }

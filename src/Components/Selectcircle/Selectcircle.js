@@ -35,4 +35,4 @@ goToSettimer() {
   }
 }
 
-export default withRouter(Selectcircle);
+export default withRouter(Selectcircle)
