@@ -42,11 +42,12 @@
 
 
 .ticking {
-  font-size: 70px;
+  font-size: 50px;
   color: #FFFFFF;
   text-align: center;
   margin-top:29px;
   margin-bottom:0;
+  display: inline-block;
 }
 
 .kingofbutton {
@@ -107,21 +108,19 @@
 }
 
 .total-status {
-  margin-left: 15px;
+  margin-left: 20px;
   display: flex;
 }
 
-.temporal-circle{
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
-  background-color: #D5FF45;
-  display: inline-block;
-  margin-left: 5px;
+
+.status-wrapper {
+  margin-left: 16px;
+  padding-left: 7px;
 
 }
-.temporal-circle-wrapper{
-  display: inline-block;
-  padding-top: 27px;
-  padding-left: 30px;
+
+.main-ticking {
+  display:flex;
+  padding-left:118px;
+
 }

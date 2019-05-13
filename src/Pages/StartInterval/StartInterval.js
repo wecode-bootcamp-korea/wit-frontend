@@ -1,11 +1,12 @@
 import React from 'react';
 import './StartInterval.scss';
+import Selectedcircle from '../../Components/Selectedcircle/Selectedcircle'
 
-const user = [{name: '달리기', action_time: 200, break_time: 10, set: 15},
-              {name: '스쿼트', action_time: 180, break_time: 20, set: 23},
-              {name: '런지', action_time: 20, break_time: 10, set: 32},
-              {name: '자전거돌리기', action_time: 60, break_time: 50, set: 15},
-              {name: '물구나무서기', action_time: 10, break_time: 60, set: 33}
+const user = [{name: '달리기', action_time: 200, break_time: 10, set: 5},
+              {name: '스쿼트', action_time: 180, break_time: 20, set: 3},
+              {name: '런지', action_time: 20, break_time: 10, set: 3},
+              {name: '자전거', action_time: 60, break_time: 50, set: 5},
+              {name: '물구나무', action_time: 10, break_time: 60, set: 3}
             ]
 
 function getTotal(user) {
@@ -50,19 +51,22 @@ function getActualSet(user) {
   return temp;
 }
 
+
 class Interval extends React.Component {
   constructor() {
     super();
     this.state = {
-      index: 0,
+      currentIdx: 0,
       total_time: getTotal(user),
-      act_set_time: getTimeByEx(user)[0],
+      act_set_time: user[0].action_time,
       action_time: user[0].action_time,
       total_set: getSetTotal(user),
       actual_set: getActualSet(user)[0],
       current_ex: getExName(user)[0],
-      clicked: false
+      clicked: false,
+      status: false
     }
+
   }
 
   componentDidMount() {
@@ -72,22 +76,19 @@ class Interval extends React.Component {
     clearInterval(this.intervalID)
     clearInterval(this.totalID)
     clearInterval(this.actsetID)
-
   }
+
 
   start() {
     this.intervalID = setInterval( () => {
-      if(this.state.action_time===1) {
+      if(this.state.act_set_time===1) {
         this.stop()
-        //1세트 끝나는 즉시 우측 하단 1세트 증가
-        this.setState({
-          actual_set:this.state.actual_set + 1
-        })
 
+        this.setState({ currentIdx: this.state.currentIdx + 1 });
 
        }
       this.setState({
-        action_time:this.state.action_time - 1
+        act_set_time:this.state.act_set_time - 1
       })
     },10);
 
@@ -98,6 +99,10 @@ class Interval extends React.Component {
     },1000);
 
     this.actsetID = setInterval( () => {
+      if(this.state.action_set_time===1) {
+        this.stop()
+
+       }
       this.setState({
         act_set_time:this.state.act_set_time - 1
       })
@@ -130,7 +135,12 @@ class Interval extends React.Component {
         </div>
         <div className="back-ground">
           <div>
-            <p className="current-ex"> {this.state.current_ex} </p>
+            <p className="current-ex">
+              {user[this.state.currentIdx].name}
+
+
+
+            </p>
             <div className="toptimer">
               <p className="time"> {Math.floor(this.state.act_set_time/60)}:</p>
               <p className="time"> {this.state.act_set_time-Math.floor(this.state.act_set_time/60)*60} </p>
@@ -139,9 +149,14 @@ class Interval extends React.Component {
               <div className="countdown-clock">
               </div>
             </div>
-            <p className="ticking">
-                {Math.floor(this.state.act_set_time/60)}
-            </p>
+            <div className="main-ticking">
+              <p className="ticking">
+                  {Math.floor(this.state.act_set_time/60)} :
+              </p>
+              <p className="ticking">
+                  {this.state.act_set_time-Math.floor(this.state.act_set_time/60)*60}
+              </p>
+            </div>
             <div className="button-wrapper">
               <div className={`kingofbutton ${this.state.clicked ? 'active' : ''}`}
                 onClick={this.handleclick.bind(this)}>
@@ -155,26 +170,15 @@ class Interval extends React.Component {
               <div className="total-status">
                 <p className="totaltime"> {Math.floor(this.state.total_time/60)} :</p>
                 <p className="totaltime"> {this.state.total_time-Math.floor(this.state.total_time/60)*60} </p>
-                <div className="temporal-circle-wrapper">
-                  <div className="temporal-circle">
-                  </div>
-                  <div className="temporal-circle">
-                  </div>
-                  <div className="temporal-circle">
-                  </div>
-                  <div className="temporal-circle">
-                  </div>
-                  <div className="temporal-circle">
-                  </div>
-                  <div className="temporal-circle">
-                  </div>
+                <div className="status-wrapper">
+                  {user.map((el) => {
+                    return (<Selectedcircle info={el}/>)})}
                 </div>
-              </div>
             </div>
           </div>
         </div>
       </div>
-
+    </div>
     )
   }
  }
