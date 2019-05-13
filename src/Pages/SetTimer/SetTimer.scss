@@ -17,6 +17,7 @@
   top: 20px;
   left: 10px;
 }
+
 .timerbox {
   width : 100%;
   height: 70px;
@@ -35,12 +36,12 @@
   width: 115px;
   height: 47px;
   position: absolute;
-  padding: 9px 35px 13px 32px;
+  // padding: 9px 35px 13px 32px;
   font-size: 20px;
   color: $buttoncl;
-  border: 1px solid $buttoncl;
+  border: none;
   top: 10px;
-  right: 10px;
+  right: 2px;
   text-align: center;
 }
 
@@ -49,24 +50,30 @@
   height: 47px;
   display: inline-block;
   padding: 9px 35px 13px 32px;
+  background-color: none;
   background: none;
   font-size: 20px;
   color: $buttoncl;
-  border: 1px solid $buttoncl;
+  border: none;
   top: 10px;
   right: 67px;
   position: absolute;
   text-align: center;
+  -webkit-appearance: none;
 }
 .timeUsersec {
   width: 57px;
   height: 47px;
   display: inline-block;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   padding: 9px 35px 13px 32px;
-  background: white;
+  background-color: transparent;
+  background: none;
   font-size: 20px;
   color: $buttoncl;
-  border: 1px solid $buttoncl;
+  border: none;
   top: 10px;
   right: 10px;
   position: absolute;
@@ -74,6 +81,8 @@
 }
 .timTimeset {
   -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   width: 115px !important;
   height: 47px;
   position: absolute;
@@ -89,29 +98,34 @@
 .timbtnmi {
   font-size: 28px;
   color: $buttoncl;
-  position: absolute;
-  left: 25px;
+
+
   top: 0px;
+  background: none;
+  border: none;
   cursor: pointer;
 }
 .timbtnpl {
   font-size: 23px;
   color: $buttoncl;
-  position: absolute;
-  right: 22px;
+
+
   top: 6px;
   cursor: pointer;
+  background: none;
+  border: none;
 
 }
 
 .setNum {
+  width: 115px;
+  height: 47px;
   position: absolute;
-  padding: 9px 35px 13px 32px;
   font-size: 20px;
-  color: #D5FF45;
-  border: 1px solid #D5FF45;
+  color: $buttoncl;
+  border: none;
   top: 10px;
-  right: 10px;
+  right: 2px;
   text-align: center;
 }
 
