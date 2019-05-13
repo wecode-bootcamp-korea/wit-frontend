@@ -48,10 +48,11 @@ class Choice extends React.Component {
   this.comparing();
 }
 
-  comparing() {
+  comparing=()=> {
     for (var i=0; i <select_list.length; i++) {
       for (var j=0; j <default_list.length; j++){
         if (select_list[i].name === default_list[j].name) {
+          console.log(this.state.clicked)
           this.setState({clicked: !this.state.clicked})
         }
     }
@@ -61,6 +62,7 @@ class Choice extends React.Component {
 }
 
   render() {
+    console.log(default_list, select_list, select_list.map(el=>el.name))
     return (
       <div>
           <div className="top-bar">
@@ -68,10 +70,24 @@ class Choice extends React.Component {
           </div>
 
           <div className="back-ground">
-            <div className={`selected-button ${this.state.clicked ? 'active' : ''}`}>
+            <div className={` ${this.state.clicked ? 'active' : ''}`}>
               {default_list.map((el) => {
+
+                console.log(el.name)
+
+
+                console.log(select_list.map(el=>el.name).indexOf(el.name))
+
+                let clicked;
+                if (select_list.map(el=>el.name).indexOf(el.name) == -1) {
+                  clicked = false;
+                } else {
+                  clicked = true;
+                }
+
                 return (
                     <Selectcircle
+                      clicked={clicked}
                       info={el}
                     />
                 )})}
