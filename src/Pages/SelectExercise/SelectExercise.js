@@ -4,30 +4,28 @@ import Selectedcircle   from '../../Components/Selectedcircle/Selectedcircle';
 import './SelectExercise.scss';
 import SetTimer from '../SetTimer/SetTimer';
 
-const default_list = [{name: '달리기', action_time: 120, break_time: 10, set: 4},
-                      {name: '스쿼트', action_time: 180, break_time: 20, set: 7},
-                      {name: '런지', action_time: 800, break_time: 10, set: 8},
-                      {name: '자전거돌리기', action_time: 60, break_time: 50, set: 5},
-                      {name: '물구나무서기', action_time: 40, break_time: 60, set: 3},
-                      {name: '사이드런지', action_time: 120, break_time: 10, set: 4},
-                      {name: '윗몸일으키기', action_time: 180, break_time: 20, set: 7},
-                      {name: '스트레칭', action_time: 800, break_time: 10, set: 8},
-                      {name: '앉았다뛰기', action_time: 60, break_time: 50, set: 5},
-                      {name: '딥스', action_time: 120, break_time: 10, set: 4},
-                      {name: '요가자세', action_time: 180, break_time: 20, set: 7},
-                      {name: '알영', action_time: 800, break_time: 10, set: 8}];
+const default_list = [{name: '달리기', action_min: 1, action_sec:43, break_min: 1, break_sec: 10, set: 4},
+                      {name: '스쿼트', action_min: 1, action_sec:42, break_min: 1, break_sec: 10, set: 4},
+                      {name: '런지', action_min: 1, action_sec:0, break_min: 1, break_sec: 10, set: 4},
+                      {name: '자전거돌리기', action_min: 1, action_sec:12, break_min: 1, break_sec: 10, set: 4},
+                      {name: '사이드런지', action_min: 1, action_sec:43, break_min: 1, break_sec: 10, set: 4},
+                      {name: '앉았다뛰기', action_min: 1, action_sec:0, break_min: 1, break_sec: 10, set: 4},
+                      {name: '딥스', action_min: 1, action_sec:0, break_min: 1, break_sec: 10, set: 4},
+                      {name: '스트레칭', action_min: 1, action_sec:0, break_min: 1, break_sec: 10, set: 4},
+                      {name: '알영', action_min: 1, action_sec:0, break_min: 1, break_sec: 10, set: 4},
+                      {name: '물구나무서기', action_min: 1, action_sec:0, break_min: 1, break_sec: 10, set: 4}];
 
-const select_list = [{name: '달리기', action_time: 120, break_time: 10, set: 4},
-                      {name: '앉았다뛰기', action_time: 180, break_time: 20, set: 7},
-                      {name: '스트레칭', action_time: 800, break_time: 10, set: 8},
-                      {name: '사이드런지', action_time: 60, break_time: 50, set: 5},
-                      {name: '딥스', action_time: 40, break_time: 60, set: 3}];
+const select_list = [{name: '달리기', action_min: 1, action_sec:43, break_min: 1, break_sec: 10, set: 4},
+                    {name: '앉았다뛰기', action_min: 1, action_sec:0, break_min: 1, break_sec: 10, set: 4},
+                    {name: '스트레칭', action_min: 1, action_sec:0, break_min: 1, break_sec: 10, set: 4},
+                    {name: '사이드런지', action_min: 1, action_sec:43, break_min: 1, break_sec: 10, set: 4},
+                    {name: '딥스', action_min: 1, action_sec:0, break_min: 1, break_sec: 10, set: 4}];
 
 
 function getTotal(select_list) {
   let total = 0;
   for (var i=0; i < select_list.length; i++) {
-    total += (select_list[i].action_time * select_list[i].set) + select_list[i].break_time;
+    total += (select_list[i].action_min * select_list[i].set) + select_list[i].break_min;
   }
   return total;
 }
@@ -46,6 +44,20 @@ class Choice extends React.Component {
     total_time: getTotal(select_list),
     total_set: getExTotal(select_list)
   }
+
+  this.comparing();
+}
+
+  comparing() {
+    for (var i=0; i <select_list.length; i++) {
+      for (var j=0; j <default_list.length; j++){
+        if (select_list[i].name === default_list[j].name) {
+          this.setState({clicked: !this.state.clicked})
+        }
+    }
+  }
+
+  //return <p>dddd</p>
 }
 
   render() {
@@ -56,13 +68,13 @@ class Choice extends React.Component {
           </div>
 
           <div className="back-ground">
-
-          {default_list.map((el) => {
-            return (
-                <Selectcircle
-                  info={el}
-                />
-            )})}
+            <div className={`selected-button ${this.state.clicked ? 'active' : ''}`}>
+              {default_list.map((el) => {
+                return (
+                    <Selectcircle
+                      info={el}
+                    />
+                )})}
         </div>
 
         <div className="result-tab">
@@ -82,6 +94,7 @@ class Choice extends React.Component {
             </div>
           </div>
         </div>
+      </div>
       </div>
     )
   }

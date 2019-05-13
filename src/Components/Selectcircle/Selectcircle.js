@@ -18,11 +18,12 @@ goToSettimer() {
   this.props.history.push({
       pathname: '/settimer',
       state: {name: this.props.info.name,
-              action_time: this.props.info.action_time,
-              break_time: this.props.info.break_time,
+              action_min: this.props.info.action_min,
+              action_sec: this.props.info.action_sec,
+              break_min: this.props.info.break_min,
+              break_sec: this.props.info.break_sec,
               set: this.props.info.set}
   });
-  console.log("운동정보가 웹상에 전달되는지 확인: 보이면 된것임")
 }
 
   render() {
