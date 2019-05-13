@@ -14,10 +14,15 @@ class Selectcircle extends React.Component {
 
 
 goToSettimer() {
+
   this.props.history.push({
       pathname: '/settimer',
-      state: {name: this.props.info.name}
-
+      state: {name: this.props.info.name,
+              action_min: this.props.info.action_min,
+              action_sec: this.props.info.action_sec,
+              break_min: this.props.info.break_min,
+              break_sec: this.props.info.break_sec,
+              set: this.props.info.set}
   });
 }
 
@@ -35,4 +40,4 @@ goToSettimer() {
   }
 }
 
-export default withRouter(Selectcircle);
+export default withRouter(Selectcircle)
