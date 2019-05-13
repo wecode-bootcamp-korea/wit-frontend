@@ -72,29 +72,16 @@ class Choice extends React.Component {
           <div className="back-ground">
             <div className={` ${this.state.clicked ? 'active' : ''}`}>
               {default_list.map((el) => {
-
-                console.log(el.name)
-
-
-                console.log(select_list.map(el=>el.name).indexOf(el.name))
-
-                let clicked;
-                if (select_list.map(el=>el.name).indexOf(el.name) == -1) {
-                  clicked = false;
-                } else {
-                  clicked = true;
-                }
-
                 return (
                     <Selectcircle
-                      clicked={clicked}
+                      clicked={select_list.map(el=>el.name).indexOf(el.name) !== -1}
                       info={el}
                     />
                 )})}
         </div>
 
         <div className="result-tab">
-          <div>
+          <div className="active">
             {select_list.map((el) => {
               return (<Selectedcircle info={el}/>)})}
           <button className="startbutton">

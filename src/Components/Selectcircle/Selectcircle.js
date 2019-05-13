@@ -6,7 +6,6 @@ class Selectcircle extends React.Component {
 
   constructor(props) {
   super(props);
-console.log(props.clicked)
   this.state = {
     clicked: props.clicked
   }
