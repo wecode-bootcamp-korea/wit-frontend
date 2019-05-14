@@ -3,14 +3,7 @@ import Selectcircle   from '../../Components/Selectcircle/Selectcircle';
 import Selectedcircle   from '../../Components/Selectedcircle/Selectedcircle';
 import './SelectExercise.scss';
 import SetTimer from '../SetTimer/SetTimer';
-
-
-const select_list = [{name: '달리기', action_min: 1, action_sec:43, break_min: 1, break_sec: 10, set: 4},
-                    {name: '앉았다뛰기', action_min: 1, action_sec:0, break_min: 1, break_sec: 10, set: 4},
-                    {name: '스트레칭', action_min: 1, action_sec:0, break_min: 1, break_sec: 10, set: 4},
-                    {name: '사이드런지', action_min: 1, action_sec:43, break_min: 1, break_sec: 10, set: 4},
-                    {name: '딥스', action_min: 1, action_sec:0, break_min: 1, break_sec: 10, set: 4}];
-
+import {withRouter} from 'react-router-dom';
 
 class Choice extends React.Component {
 
@@ -46,6 +39,18 @@ componentDidMount() {
      })
 }
 
+  goToIntervalStart() {
+    this.props.history.push({
+      pathname: '/StartInterval',
+      state: {name: this.state.chosen_list.exname,
+              action_min: this.state.chosen_list.action_min,
+              action_sec: this.state.chosen_list.action_sec,
+              break_min: this.state.chosen_list.break_min,
+              break_sec: this.state.chosen_list.break_sec,
+              set: this.state.chosen_list.set
+      }
+    })
+  }
 
   render() {
     return (
@@ -67,11 +72,11 @@ componentDidMount() {
 
         <div className="result-tab">
           <div className="active">
-            {select_list.map((el) => {
+            {this.state.chosen_list.map((el) => {
               return (<Selectedcircle info={el}/>)})}
-          <button className="startbutton">
+          <button onClick={this.goToIntervalStart.bind(this)} className="startbutton">
             <p className="startbutton-text">START</p>
-          </button>
+            </button>
           <div>
             <p className= "selected_text">Action. {this.state.total_set} </p>
             <p className= "selected_text">TIME. {this.state.total_time} </p>
@@ -88,4 +93,4 @@ componentDidMount() {
   }
 }
 
-export default Choice;
+export default withRouter(Choice);

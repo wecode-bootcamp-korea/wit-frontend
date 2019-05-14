@@ -17,7 +17,7 @@ class Selectedcircle extends React.Component {
     return (
       <div className="blocking">
         <span className="small_dot"></span>
-        <p className="selected-ex-text">{this.props.info.name}</p>
+        <p className="selected-ex-text">{this.props.info.train_name}</p>
       </div>
     )
   }
