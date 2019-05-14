@@ -17,10 +17,10 @@ goToSettimer() {
   this.props.history.push({
       pathname: '/settimer',
       state: {name: this.props.info.train_name,
-              action_min: Number(this.props.info.default_activation.slice(3,5)),
-              action_sec: Number(this.props.info.default_activation.slice(6,)),
-              break_min: Number(this.props.info.default_break.slice(3,5)),
-              break_sec: Number(this.props.info.default_break.slice(6,)),
+              action_min: this.props.info.default_activation.slice(3,5),
+              action_sec: this.props.info.default_activation.slice(6,),
+              break_min: this.props.info.default_break.slice(3,5),
+              break_sec: this.props.info.default_break.slice(6,),
               set: this.props.info.default_set,
               kcal: this.props.info.default_calorie}
   });
