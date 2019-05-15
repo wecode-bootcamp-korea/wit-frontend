@@ -51,7 +51,7 @@ class Choice extends React.Component {
   comparing() {
     for (var i=0; i <select_list.length; i++) {
       for (var j=0; j <default_list.length; j++){
-        if (select_list[i].name === default_list[j].name) {
+        if (select_list[i].name == default_list[j].name) {
           this.setState({clicked: !this.state.clicked})
         }
     }
