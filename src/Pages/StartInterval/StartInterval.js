@@ -24,6 +24,8 @@ class Interval extends React.Component {
       //action_sec: this.ex_list[currentIdx].action_sec,
       //set: this.ex_list[currentIdx].set
     }
+    console.log(this.ex_list)
+    console.log(this.state.set_status)
   }
 
   componentDidMount() {
@@ -39,7 +41,6 @@ class Interval extends React.Component {
 
       if (this.state.act_set_time < 1) {
         this.stop()
-
         this.setState({
           set_status: this.state.set_status - 1,
           act_set_time: (this.ex_list[this.state.currentIdx].action_min*60) + this.ex_list[this.state.currentIdx].action_sec
