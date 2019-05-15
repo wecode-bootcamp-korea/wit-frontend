@@ -17,6 +17,7 @@ class Selectedcircle extends React.Component {
 
     return (
       <div className={`blocking ${this.props.status ? 'active' : ''}`}>
+
         <span className="small_dot"></span>
         <p className="selected-ex-text">{this.props.info.exname}</p>
       </div>
