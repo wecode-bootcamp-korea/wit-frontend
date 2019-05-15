@@ -8,8 +8,23 @@ $buttoncl: #D5FF45;
 
 body {
   background-color: $backgroundcl;
+  font-family: 'S-CoreDream-3Light', 'S-CoreDream-9Black';
 
 }
+
+@font-face {
+  font-family: 'S-CoreDream-9Black';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-9Black.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'S-CoreDream-3Light';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+  font-weight: normal;
+  font-style: normal; }
+
 .notopmargwrap {
   position: relative;
   width: 100%;
