@@ -11,7 +11,7 @@ class Button extends React.Component {
       <button
         className="btn"
         onClick={this.props.click}
-        
+
         >
         {this.props.text}
       </button>
