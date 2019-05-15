@@ -39,6 +39,7 @@ componentDidMount() {
      })
 }
 
+
   goToIntervalStart() {
     this.props.history.push({
       pathname: '/StartInterval',
