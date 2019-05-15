@@ -16,9 +16,7 @@ class SetTimer extends React.Component {
       break_sec: props.location.state.break_sec,
       set: props.location.state.set,
       exname: props.location.state.name
-
     };
-
 
     console.log(props)
   }
@@ -48,7 +46,7 @@ class SetTimer extends React.Component {
   handleChange = (e) => {
 
     this.setState({
-      [e.target.name]: parseInt(e.target.value)
+      [e.target.name]: e.target.value
     });
     console.log(e.target.name, typeof e.target.value)
   }
@@ -56,14 +54,22 @@ class SetTimer extends React.Component {
   goToSelectExercise = () => {
     let list = JSON.parse(sessionStorage.getItem('settings'));
     if (list === null) {
-      list = [];
+      list = [{
+        exname: this.props.location.state.name,
+        action_min: this.state.action_min,
+        action_sec: this.state.action_sec,
+        break_min: this.state.break_min,
+        break_sec: this.state.break_sec,
+        set: this.state.set
+      }
+
+      ];
       sessionStorage.setItem('settings', JSON.stringify(list));
       this.props.history.push('/SelectExercise');
     } else if (list != null) {
       list.push({
-
       exname: this.props.location.state.name,
-      action_min: this.state.action_min,
+      action_min: Number(this.state.action_min),
       action_sec: this.state.action_sec,
       break_min: this.state.break_min,
       break_sec: this.state.break_sec,
@@ -77,20 +83,26 @@ class SetTimer extends React.Component {
   render() {
     // console.log(this.state.sec)
     const minlist=[];
-    for (var i=0; i<31; i++) {minlist.push(i*1);}
+    for (var i=0; i<31; i++) {
+      var num = i*1;
+      minlist.push(("0"+ num).slice(-2));}
     const minselect = minlist.map(
       (five, index) => (<option key={index} value={five}>{five}</option>)
     );
 
     const seclist=[];
-    for (var i=0; i<12; i++) {seclist.push(i*5);}
+    for (var i=0; i<12; i++) {
+      var num = i*5;
+      seclist.push(("0"+ num).slice(-2));}
+
     const secselect = seclist.map(
       (five, index) => (<option key={index} value={five}>{five}</option>)
     );
 
-      var totalSec = this.state.set*(this.state.action_min*60+this.state.action_sec+this.state.break_min*60+this.state.break_sec);
+      var totalSec = this.state.set*(Number(this.state.action_min)*60+Number(this.state.action_sec)+Number(this.state.break_min)*60+Number(this.state.break_sec));
       var min_result = Math.floor(totalSec / 60)
       var sec_result = totalSec % 60
+
 
     return (
       <div>
