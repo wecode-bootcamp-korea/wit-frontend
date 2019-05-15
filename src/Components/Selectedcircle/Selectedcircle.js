@@ -8,16 +8,17 @@ class Selectedcircle extends React.Component {
   super(props);
 
   this.state = {
-    clicked: props.clicked
+    clicked: props.clicked,
+    status: props.status
   }
 }
 
   render() {
 
     return (
-      <div className="blocking">
+      <div className={`blocking ${this.props.status ? 'active' : ''}`}>
         <span className="small_dot"></span>
-        <p className="selected-ex-text">{this.props.info.name}</p>
+        <p className="selected-ex-text">{this.props.info.exname}</p>
       </div>
     )
   }

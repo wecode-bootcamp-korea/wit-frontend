@@ -11,6 +11,7 @@ import Signup from './Pages/Signup/Signup'
 import Choice from './Pages/SelectExercise/SelectExercise'
 import SetTimer from './Pages/SetTimer/SetTimer'
 import UserInfo from './Pages/userInfo/userInfo'
+import ResultPage from './Pages/ResultPage/ResultPage'
 
 class Routes extends React.Component {
   render() {
@@ -25,6 +26,7 @@ class Routes extends React.Component {
           <Route exact path="/userInfo" component={UserInfo} />
 
 
+          <Route path="/ResultPage" component={ResultPage} />
         </Switch>
       </Router>
     )
