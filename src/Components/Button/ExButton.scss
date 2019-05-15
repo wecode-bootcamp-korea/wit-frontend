@@ -1,0 +1,43 @@
+@import '../../Style/config';
+
+.Exbtn {
+  width : 90px;
+  height: 38px;
+  font-size: 11px;
+  margin: 10px;
+  border: 1px solid white;
+  cursor: pointer;
+  color: white;
+  padding: 17px 71 72px;
+  background-color: transparent;
+  border-radius: 20px;
+  font-family: S-CoreDream-3Light;
+  font-weight: 900;
+  border-style: 1px solid white;
+
+  &:hover {
+    opacity: 0.8;
+    background-color: $buttoncl;
+    color: black;
+    border-style: none;
+
+  }
+}
+
+.clickbtn {
+  width : 90px;
+  height: 38px;
+  font-size: 11px;
+  margin: 10px;
+  border: 1px solid white;
+  cursor: pointer;
+  color: black;
+  padding: 17px 71 72px;
+  background-color: $buttoncl;
+  border-radius: 20px;
+  font-family: S-CoreDream-3Light;
+  font-weight: 900;
+  border-style:none;
+  opacity: 0.8;
+
+}
