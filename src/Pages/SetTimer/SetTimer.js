@@ -2,130 +2,181 @@ import React from 'react';
 import './SetTimer.scss';
 import '../../Style/config.scss'
 import Button from '../../Components/Button/Button'
-// import TimerForm from '../../Components/TimerForm/TimerForm'
+import { withRouter } from 'react-router-dom';
 
 class SetTimer extends React.Component {
-  constructor() {
-    super();
-    this.state  = { //to remember things, component uses state.
+
+  constructor(props) {
+    super(props);
+    this.state  = {
       repeat: 1,
-      min: 0,
-      sec: '' //백에서 뿌려주는거받기
+      action_min: props.location.state.action_min,
+      action_sec: props.location.state.action_sec,
+      break_min: props.location.state.break_min,
+      break_sec: props.location.state.break_sec,
+      set: props.location.state.set,
+      exname: props.location.state.name
     };
+
+    console.log(props)
   }
 
   handleIncrease = () => {
     this.setState({
-      repeat: this.state.repeat + 1
+      set: this.state.set + 1
     });
   }
 
   handleDecrease = () => {
-    //console.log(this.state.)
-    if (this.state.repeat === 0) {
+
+    if (this.state.set === 0) {
       console.log("stop");
       this.setState({
-        repeat: this.state.repeat
+        set: this.state.set
 
       })
     }
     else {
-      const { repeat } = this.state;
+      const { set } = this.state;
       this.setState({
-        repeat: repeat - 1
+        set: set - 1
       });
     }
-
     }
   handleChange = (e) => {
+
     this.setState({
       [e.target.name]: e.target.value
     });
+    console.log(e.target.name, typeof e.target.value)
   }
 
-  onClickTimer = () => {
-    this.setState({
+  goToSelectExercise = () => {
+    let list = JSON.parse(sessionStorage.getItem('settings'));
+    if (list === null) {
+      list = [{
+        exname: this.props.location.state.name,
+        action_min: this.state.action_min,
+        action_sec: this.state.action_sec,
+        break_min: this.state.break_min,
+        break_sec: this.state.break_sec,
+        set: this.state.set
+      }
 
+      ];
+      sessionStorage.setItem('settings', JSON.stringify(list));
+      this.props.history.push('/SelectExercise');
+    } else if (list != null) {
+      list.push({
+      exname: this.props.location.state.name,
+      action_min: Number(this.state.action_min),
+      action_sec: this.state.action_sec,
+      break_min: this.state.break_min,
+      break_sec: this.state.break_sec,
+      set: this.state.set
+    });
 
-    })
+    sessionStorage.setItem('settings', JSON.stringify(list));
+    this.props.history.push('/SelectExercise');
+    }
   }
-
-  handleSubmit = (e) => {
-   fetch('http://localhost:8000/user', {
-     method: 'POST',
-     headers: {
-       'Content-Type': 'application/json',
-     },
-     body: JSON.stringify({
-     }) //rePassword === Password해야만  body로 전달하도록 바꿔야함.
-     })
-     .then(response => response.json())
-     .then(response => {
-        console.log(response['message'])
-        if (response.message === 'email already exists') {
-          alert("이미 존재하는 이메일입니다.");
-        }
-           //alert("회원가입 성공!");
-     });
- }
-
   render() {
+    // console.log(this.state.sec)
+    const minlist=[];
+    for (var i=0; i<31; i++) {
+      var num = i*1;
+      minlist.push(("0"+ num).slice(-2));}
+    const minselect = minlist.map(
+      (five, index) => (<option key={index} value={five}>{five}</option>)
+    );
+
+    const seclist=[];
+    for (var i=0; i<12; i++) {
+      var num = i*5;
+      seclist.push(("0"+ num).slice(-2));}
+
+    const secselect = seclist.map(
+      (five, index) => (<option key={index} value={five}>{five}</option>)
+    );
+
+      var totalSec = this.state.set*(Number(this.state.action_min)*60+Number(this.state.action_sec)+Number(this.state.break_min)*60+Number(this.state.break_sec));
+      var min_result = Math.floor(totalSec / 60)
+      var sec_result = totalSec % 60
+
+
     return (
       <div>
         <div className="notopmargwrap">
           <p className="extitle">SETTING</p>
           <div className="boxposition">
-            <p className="extitle">PUSH UPS</p>
+            <p className="extitle">{this.state.exname}</p>
             <div className="inputboxes">
               <form className="timerbox">
                 <label className="title">TIME</label>
-                {/* <div className="timeset">02:30</div>*/}
-                <input
+                 <div className="timeset">{this.state.action_min}:{this.state.action_sec}</div>
+                <select
+                name="action_min"
+                value={this.state.action_min}
+                onChange={this.handleChange.bind(this)}
                 className="timeUsermin"
-                type="number"
-                value={this.state.min}
-                placeholder="00"
-                onChange={this.handleChange}
-                />
-                <input
+                >
+                {minselect}
+                </select>
+                <select
+                name="action_sec"
+                value={this.state.action_sec}
                 className="timeUsersec"
-                value={this.state.sec}
-                placeholder="00"
-                onChange={this.handleChange}
-                />
+                onChange={this.handleChange.bind(this)}>
+                  {secselect}
+                </select>
               </form>
               <div className="timerbox">
                 <label className="title">BREAK</label>
-                <div className="timeset"></div>
+                <div className="timeset">{this.state.break_min}:{this.state.break_sec}</div>
+                <select
+                name="break_min"
+                value={this.break_min}
+                onChange={this.handleChange.bind(this)}
+                className="timeUsermin"
+                >
+                {minselect}
+                </select>
+                <select
+                name="break_sec"
+                value={this.state.break_sec}
+                className="timeUsersec"
+                onChange={this.handleChange.bind(this)}>
+                  {secselect}
+                </select>
               </div>
               <div className="timerbox">
                 <label className="title">SET</label>
                 <div className="timTimeset">
-                  <span className="timbtnmi" onClick={this.handleDecrease}> -  </span>
-                    <div className="setNum">{this.state.repeat}</div>
-                  <span className="timbtnpl" onClick={this.handleIncrease}>  + </span>
-
+                    <div className="setNum">
+                    <button className="timbtnmi" onClick={this.handleDecrease}>-</button>
+                    {this.state.set}
+                    <button className="timbtnpl" onClick={this.handleIncrease}>+</button>
+                    </div>
 
                 </div>
               </div>
             </div>
             <div className="setResult"> TOTAL </div>
-            <div className="setResult"> 05:10 </div>
+            <div className="setResult"> {min_result}분 {sec_result}초</div>
             <div className="setResult"> 200 Kcal </div>
 
           </div>
           <div id="blanksignup">
             <Button
-            text="저장"
-            click={this.handleSubmit}/>
+            text="다음"
+            click={this.goToSelectExercise}
+            />
           </div>
       </div>
-
-
-
       </div>
-    )
-  }
-}
 
-export default SetTimer;
+    )
+
+}
+}
+export default withRouter(SetTimer);
