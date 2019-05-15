@@ -10,22 +10,20 @@ class Interval extends React.Component {
     super();
 
     const currentIdx = 0;
-    this.ex_list = JSON.parse(sessionStorage.getItem('settings'))
+    this.ex_list = JSON.parse(sessionStorage.getItem('settings')) || [{}]
     this.state = {
       currentIdx: currentIdx,
       clicked: false,
       status: false,
-      set_status: this.ex_list[currentIdx].set,
-      act_set_time: (this.ex_list[currentIdx].action_min*60) + this.ex_list[currentIdx].action_sec,
-      exname:this.ex_list[currentIdx].exname,
-      break_min: this.ex_list[currentIdx].break_min,
-      break_sec: this.ex_list[currentIdx].break_sec,
-      action_min: this.ex_list[currentIdx].action_min,
-      action_sec: this.ex_list[currentIdx].action_sec,
-      set: this.ex_list[currentIdx].set
+      set_status: this.ex_list[currentIdx].set || 3,
+      act_set_time: (this.ex_list[currentIdx].action_min*60) + this.ex_list[currentIdx].action_sec || 3,
+      //exname:this.ex_list[currentIdx].exname,
+      //break_min: this.ex_list[currentIdx].break_min,
+      //break_sec: this.ex_list[currentIdx].break_sec,
+      //action_min: this.ex_list[currentIdx].action_min,
+      //action_sec: this.ex_list[currentIdx].action_sec,
+      //set: this.ex_list[currentIdx].set
     }
-    console.log(this.ex_list)
-    console.log(this.state.set_status)
   }
 
   componentDidMount() {
@@ -37,16 +35,15 @@ class Interval extends React.Component {
   }
 
   start() {
-    console.log("current idx check", this.state.currentIdx)
     this.intervalID = setInterval(() => {
 
       if (this.state.act_set_time < 1) {
         this.stop()
+
         this.setState({
           set_status: this.state.set_status - 1,
           act_set_time: (this.ex_list[this.state.currentIdx].action_min*60) + this.ex_list[this.state.currentIdx].action_sec
         })
-        console.log("set_status",this.state.set_status)
 
         if (this.state.set_status < 1) {
           this.stop()
@@ -55,8 +52,13 @@ class Interval extends React.Component {
             set_status: this.ex_list[this.state.currentIdx].set,
             act_set_time: (this.ex_list[this.state.currentIdx + 1].action_min*60) + this.ex_list[this.state.currentIdx + 1].action_sec
           });
+
         }
-        this.start();
+
+        //setTimeOut(() => {
+            this.start();
+        //}, this.ex_list[this.state.currentIdx].break_min*1000)
+
       }
 
       this.setState({ act_set_time: this.state.act_set_time - 1 });
@@ -79,39 +81,38 @@ class Interval extends React.Component {
   }
 }
 
-  goToResultPage() {
-    this.props.history.push({
-                              pathname: '/ResultPage',
-                              state: {name: this.state.exname,
-                                      action_min: this.state.action_min,
-                                      action_sec: this.state.action_sec,
-                                      break_min: this.state.break_min,
-                                      break_sec: this.state.break_sec,
-                                      set: this.state.set
-                                    }})}
 
-  resultPost() {
+  resultPost = () => {
+    let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3N30.iC0DHkrQ48DRhZgQPfmU5E5qOVWqPcx-y3hD86kvp9Q"
+
+    let allList = this.ex_list.map(el => {
+      return ({
+        name: el.exname,
+
+      })
+    })
+
     fetch('http://13.125.249.35:8080/train', {
       method:'POST',
       headers: {
+        'Authorization': token,
         'Content-Type': 'application/json',
+
       },
-      body: JSON.stringify({
-        exname: this.state.exname,
-        action_min: this.state.action_min,
-        action_sec: this.state.action_sec,
-        break_min: this.state.break_min,
-        break_sec: this.state.break_sec,
-        set: this.state.set
-      })
+      body: JSON.stringify({ all: this.ex_list })
     })
     .then(response => response.json())
     .then(response => {
-      if (response.success) {
-    console.log('운동결과 저장이 완료되었습니다!')
-  }
+
+      this.goToResultPage()
   })
 }
+
+  goToResultPage() {
+    this.props.history.push('/ResultPage')
+}
+
+
   render() {
 
     return (
