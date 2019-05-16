@@ -3,7 +3,7 @@
 }
 .button-up {
   color: #FFFFFF;
-  font-size: 16px;
+  font-size: 24px;
   text-align: right;
   font-weight: bold;
   margin-right: 25px;
@@ -17,8 +17,7 @@
 
 .back-ground {
   background-color: #10101C;
-  margin-block-start: none;
-  padding-top: 40px
+  padding-top: 85px
 }
 
 .current-ex{
@@ -27,10 +26,12 @@
   color: #FFFFFF;
   text-align: center;
   font-size: 30px;
+  padding-top:30px;
 }
 
 .toptimer{
   text-align: center;
+  padding-top: 20px;
 }
 
 .time {
@@ -87,8 +88,8 @@
 }
 
 .countdown-clock {
-  height: 220px;
-  width: 220px;
+  height: 240px;
+  width: 240px;
   border-radius: 50%;
   background-color: #D5FF45;
   display: flex;
@@ -121,6 +122,10 @@
 
 .main-ticking {
   display:flex;
-  padding-left:118px;
+  padding-left:130px;
 
+}
+
+.status .small_dot{
+  background-color: #D5FF45;
 }

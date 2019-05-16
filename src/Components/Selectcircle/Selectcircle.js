@@ -11,7 +11,6 @@ class Selectcircle extends React.Component {
   }
 }
 
-
 goToSettimer() {
 
   this.props.history.push({
@@ -27,8 +26,6 @@ goToSettimer() {
 }
 
   render() {
-    // console.log(this.props)
-
     return (
       <div className={`blocking ${this.state.clicked ? 'active' : ''}`}
             onClick={()=>{this.setState({clicked: !this.state.clicked })}}

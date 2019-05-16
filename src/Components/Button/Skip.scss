@@ -1,0 +1,16 @@
+@import '../../Style/config';
+
+
+.skip {
+  color: #63636B;
+  text-align: right;
+  margin-right: 22px;
+  margin-top: 19px;
+  font-size: 20px;
+  margin-bottom: 44px;
+  &:hover {
+    opacity: 0.8;
+    color: white;
+    cursor: pointer;
+  }
+}

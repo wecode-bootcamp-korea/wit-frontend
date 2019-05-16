@@ -1,3 +1,11 @@
-.active .small_dot {
+
+.blocking .small_dot {
+  display: inline-block;
   background-color: #D5FF45;
+}
+
+
+.status .small_dot {
+  background-color: #0be7fc;
+  color: #D5FF45;
 }
