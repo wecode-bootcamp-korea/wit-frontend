@@ -7,7 +7,7 @@ class ExButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      active: false
+      active: props.selected
     }
   }
 
@@ -26,6 +26,7 @@ class ExButton extends React.Component {
       <button
         onClick={this.toggleClass}
         className={this.state.active ? 'clickbtn':'Exbtn'}
+
         >
         {this.props.text}
       </button>
