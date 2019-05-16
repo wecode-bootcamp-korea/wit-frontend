@@ -20,6 +20,13 @@ body {
 }
 
 @font-face {
+  font-family: 'S-CoreDream-6Bold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-6Bold.woff')
+  format('woff');
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
   font-family: 'S-CoreDream-3Light';
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
   font-weight: normal;
@@ -30,6 +37,15 @@ body {
   width: 100%;
   text-align: center;
   padding-top: 10px;
+}
+
+.userinfowrap {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  padding-top: 10px;
+  font-family: 'S-CoreDream-6Bold';
+  color: white;
 }
 
 .wrapper {
@@ -70,6 +86,11 @@ body {
   width: 310px;
 }
 
+.inputboxes-userinfo {
+  width: 375px;
+  padding: 0px 10px;
+}
+
 // .inputboxes, input[type=text]:focus{
 //   // border: none;
 //   background-color: white;
@@ -80,4 +101,17 @@ body {
   font-weight: bold;
   font-size: 17px;
   margin-bottom: 4px;
+}
+
+.txtinput {
+  background: none;
+  width: 150px;
+  line-height: 40px;
+  float: right;
+  font-size: 18px;
+  border: none;
+  color: white;
+  float: right;
+  font-family: 'S-CoreDream-6Bold'
+
 }
