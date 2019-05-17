@@ -12,6 +12,8 @@ import Choice from './Pages/SelectExercise/SelectExercise'
 import SetTimer from './Pages/SetTimer/SetTimer'
 import UserInfo from './Pages/userInfo/userInfo'
 import ResultPage from './Pages/ResultPage/ResultPage'
+import ModalRe from './Pages/Modal/ModalRe'
+import ModalUnre from './Pages/Modal/ModalUnre'
 
 class Routes extends React.Component {
   render() {
@@ -27,6 +29,8 @@ class Routes extends React.Component {
 
 
           <Route path="/ResultPage" component={ResultPage} />
+          <Route exact path="/ModalRe" component={ModalRe} />
+          <Route exact path="/ModalUnre" component={ModalUnre} />
         </Switch>
       </Router>
     )
