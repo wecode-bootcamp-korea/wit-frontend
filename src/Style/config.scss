@@ -64,8 +64,7 @@ body {
   font-size: 34px;
   text-align: left;
   height: 40px;
-  margin-left: 5px;
-  margin-bottom: 30px;
+  margin: 0 30px 30px;
   color: white;
   font-weight: 700;
 }
@@ -84,6 +83,7 @@ body {
 }
 .inputboxes {
   width: 310px;
+  margin: 0 30px 30px;
 }
 
 .inputboxes-userinfo {
@@ -91,10 +91,6 @@ body {
   padding: 0px 10px;
 }
 
-// .inputboxes, input[type=text]:focus{
-//   // border: none;
-//   background-color: white;
-// }
 .maintext {
   margin: 10px;
   color: $bordercl;

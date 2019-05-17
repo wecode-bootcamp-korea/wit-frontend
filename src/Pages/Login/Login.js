@@ -1,6 +1,7 @@
 import React from 'react';
 import './Login.scss';
 import Button from '../../Components/Button/Button'
+import {withRouter} from 'react-router-dom';
 
 class Login extends React.Component {
   constructor() {
@@ -51,10 +52,20 @@ class Login extends React.Component {
 
       if (response.success) {
         alert('로그인이 완료되었습니다!');
+        this.props.history.push('/SelectExercicse');
   }
 })
 
 }
+
+goToSelectExercise = () => {
+  this.props.history.push('/SelectExercise');
+}
+
+goToSignUp = () => {
+  this.props.history.push('/signup');
+}
+
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
@@ -98,16 +109,19 @@ class Login extends React.Component {
             click={this.handleClick.bind(this)}/>
           </div>
           <div className="spanblock">
-            <span className="maintext">비회원으로 시작하기</span>
+            <span
+            className="logstart"
+            onClick={this.goToSelectExercise}>비회원으로 시작하기</span>
           </div>
           <div>
             <Button
+            click={this.goToSignUp}
             text="회원가입"/>
           </div>
-          <div className="spanblock">
-            <span className="maintext">아이디찾기</span>
-            <span className="maintext">비밀번호찾기</span>
-          </div>
+          {/* <div className="spanblock">
+          //   <span className="logstart">아이디찾기</span>
+          //   <span className="logstart">비밀번호찾기</span>
+          // </div>*/}
         </div>
 
         <p onClick={this.handleClick.bind(self)}>
@@ -119,4 +133,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);
