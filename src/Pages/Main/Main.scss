@@ -1,0 +1,47 @@
+@import '../../Style/config';
+
+.mainwit {
+  height: 202.41px;
+  width: 202.41px;
+  border-radius: 50%;
+  border: 4px solid $buttoncl;
+  color: yellow;
+  margin: 101.8px auto 100px;
+}
+
+.mainsmwit {
+  color: $buttoncl;
+  font-size: 48px;
+  margin: 57.8px auto 0px;
+  text-align: center;
+  font-weight: 900;
+}
+
+.start {
+  color: $bordercl;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 112px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.mainlog {
+  color: white;
+  font-weight: 900;
+  font-size: 30px;
+  text-align: center;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+
+.wetrain {
+  color: #707070;
+  font-size: 20px;
+  margin-top: 95px;
+  text-align: center;
+  margin-left: 10px;
+}
