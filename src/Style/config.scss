@@ -111,3 +111,14 @@ body {
   font-family: 'S-CoreDream-6Bold'
 
 }
+
+.logstart {
+  margin: 10px;
+  color: $bordercl;
+  font-weight: bold;
+  font-size: 17px;
+  margin-bottom: 4px;
+  &:hover {
+    cursor: pointer;
+  }
+}

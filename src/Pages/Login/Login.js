@@ -2,6 +2,7 @@ import React from 'react';
 import './Login.scss';
 import Button from '../../Components/Button/Button'
 import {withRouter} from 'react-router-dom';
+import '../../Style/config.scss'
 
 class Login extends React.Component {
   constructor() {
