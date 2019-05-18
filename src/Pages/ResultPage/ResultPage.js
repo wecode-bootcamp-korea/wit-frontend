@@ -14,6 +14,9 @@ class ResultPage extends React.Component {
       }
   }
   render() {
+
+
+
     return (
       <div>
         <div className="top-bar">
@@ -21,7 +24,9 @@ class ResultPage extends React.Component {
         </div>
         <div className="blocking">
           {this.ex_list.map((el) => {
-            return (<Resultcircle info={el}/>)})}
+            return (<Resultcircle
+                    info={el}
+                    />)})}
         </div>
         <div className="result-bar">
         </div>
