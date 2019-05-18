@@ -27,6 +27,18 @@ class UserInfo extends React.Component {
   }
 
   componentDidMount() {
+    let token = localStorage.getItem('wit-token') || '';
+    fetch('http://13.125.249.35:8080/user/detail', {
+      headers: {
+          'Authorization': token,
+      }
+    })
+    .then(response => response.json())
+    .then(response => {
+       console.log(response.data);
+    })
+
+
     fetch('http://13.125.249.35:8080/train/all')
     .then(response => response.json())
     .then(response => {

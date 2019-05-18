@@ -31,7 +31,7 @@ class Login extends React.Component {
 
   handleClick() {
 
-    fetch('http://localhost:8000/user/signin', {
+    fetch('http://13.125.249.35:8000/user/signin', {
       method:'POST',
       headers: {
         'Content-Type': 'application/json',
