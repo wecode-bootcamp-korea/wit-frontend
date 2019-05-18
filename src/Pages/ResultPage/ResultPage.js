@@ -1,7 +1,9 @@
 import React from 'react';
 import './ResultPage.scss';
 import {withRouter} from 'react-router-dom';
-import Resultcircle from '../../Components/Resultcircle/Resultcircle'
+import Resultcircle from '../../Components/Resultcircle/Resultcircle';
+
+
 
 class ResultPage extends React.Component {
   constructor() {
@@ -22,6 +24,7 @@ class ResultPage extends React.Component {
         <div className="top-bar">
           <p className="unify-text"> Result Page </p>
         </div>
+
         <div className="blocking">
           {this.ex_list.map((el) => {
             return (<Resultcircle
@@ -48,5 +51,6 @@ class ResultPage extends React.Component {
     )
   }
  }
+
 
 export default withRouter(ResultPage);

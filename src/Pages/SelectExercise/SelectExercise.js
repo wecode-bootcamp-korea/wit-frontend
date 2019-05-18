@@ -62,9 +62,10 @@ componentDidMount() {
 
           <div className="back-ground">
             <div className={` ${this.state.clicked ? 'active' : ''}`}>
-              {this.state.default_data.map((el) => {
+              {this.state.default_data.map((el, idx) => {
                 return (
                     <Selectcircle
+                      key={idx}
                       clicked={this.state.chosen_list.map(el=>el.exname).indexOf(el.train_name) !== -1}
                       info={el}
                     />

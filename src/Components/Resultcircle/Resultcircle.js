@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 class Resultcircle extends React.Component {
 
   constructor(props) {
+
   super(props);
 
   this.state = {
@@ -14,7 +15,6 @@ class Resultcircle extends React.Component {
   render() {
 
     const total_time = (Number(this.props.info.action_min)*60 + Number(this.props.info.action_sec)) * Number(this.props.info.set)
-    console.log(total_time)
 
 
     let total_min_by_ex = Math.floor(total_time/60)
@@ -27,7 +27,6 @@ class Resultcircle extends React.Component {
         <span className="result_selected-ex-text">{this.props.info.exname}</span>
         <span className="result_selected-ex-text">{total_min_by_ex > 10 ? total_min_by_ex : "0"+total_min_by_ex}:{total_sec_by_ex.toString().slice(2,4)}</span>
         <span className="result_selected-ex-text">{this.props.info.set}set</span>
-
       </div>
     )
   }
