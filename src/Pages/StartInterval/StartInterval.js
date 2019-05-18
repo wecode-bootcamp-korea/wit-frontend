@@ -3,10 +3,15 @@ import './StartInterval.scss';
 import Selectedcircle from '../../Components/Selectedcircle/Selectedcircle';
 import {withRouter} from 'react-router-dom';
 import SelectExercise from '../SelectExercise/SelectExercise';
-
-
+import Progressbar from '../../Components/Progressbar/Progressbar';
 
 class Interval extends React.Component {
+
+  state = {
+    set: 0,
+    time: 60
+  }
+
   constructor() {
     super();
 
@@ -22,29 +27,34 @@ class Interval extends React.Component {
       set_status: this.ex_list[currentIdx].set,
       act_set_time: (Number(this.ex_list[currentIdx].action_min)*60) + Number(this.ex_list[currentIdx].action_sec),
     }
-    console.log(this.ex_list)
 
-    // let total_time =0;
-    // function getTotalTime(){
-    //   for (var i =0; i < this.ex_list.length; i++) {
-    //   total_time += (Number(this.ex_list[i].action_min)*60 + Number(this.ex_list[i].action_sec)) * Number(this.ex_list[i].set)
-    // }
-    // return total_time;
-    // }
+    this.real_total = [];
+    let total_time =0;
+    for (var i=0; i <this.ex_list.length; i++){
+      total_time += (Number(this.ex_list[i].action_min)*60 + Number(this.ex_list[i].action_sec)) * Number(this.ex_list[i].set)
+      this.real_total.push(total_time)
+    }
+    this.total_min = Math.floor(this.real_total[this.real_total.length-1]/60)
+    this.total_sec = this.real_total[this.real_total.length-1] - this.total_min;
 
+
+
+    this.resultPost = this.resultPost.bind(this);
+    this.handleclick = this.handleclick.bind(this);
   }
-  getTotalTime() {
-    const total_time=0;
-    for (var i =0; i < this.ex_list.length; i++) {
-    total_time += (Number(this.ex_list[i].action_min)*60 + Number(this.ex_list[i].action_sec)) * Number(this.ex_list[i].set)
-  }
-  return total_time;
-  }
+
+
+  // getTotalTime() {
+  //   let total_time=0;
+  //   for (var i =0; i < this.ex_list.length; i++) {
+  //   total_time += (Number(this.ex_list[i].action_min)*60 + Number(this.ex_list[i].action_sec)) * Number(this.ex_list[i].set)
+  // }
+  // return total_time;
+  // }
 
   onPlay() {
     this.sound.play();
   }
-
 
   componentDidMount() {
     this.start();
@@ -57,10 +67,12 @@ class Interval extends React.Component {
   start() {
     this.intervalID = setInterval(() => {
 
-      if (this.state.act_set_time===6 ) {
+      //6초 남았을 때 카운트다운 노래 시작
+      if (this.state.act_set_time === 6 ) {
         this.onPlay()
       }
 
+      //0초 도달하면 ==> 세트가 끝났다는 의미
       if (this.state.act_set_time < 1) {
         this.stop()
         this.setState({
@@ -68,15 +80,19 @@ class Interval extends React.Component {
           act_set_time: (Number(this.ex_list[this.state.currentIdx].action_min)*60) + Number(this.ex_list[this.state.currentIdx].action_sec)
         })
 
-        if (this.state.set_status < 1) {
+        //세트가 0이 되어서 해당 운동이 끝났다.
+
+        if (this.state.set_status < 1 ) {
           this.stop()
+          console.log(this.ex_list, this.state.currentIdx+1)
+
           this.setState({
             currentIdx: this.state.currentIdx + 1,
             set_status: this.ex_list[this.state.currentIdx].set,
             act_set_time: (Number(this.ex_list[this.state.currentIdx + 1].action_min)*60) + Number(this.ex_list[this.state.currentIdx + 1].action_sec)
           });
-
         }
+
         //setTimeOut(() => {
             this.start();
         //}, this.ex_list[this.state.currentIdx].break_min*1000)
@@ -89,9 +105,6 @@ class Interval extends React.Component {
     clearInterval(this.intervalID)
   }
 
-  getTimerSound() {
-      this.setState({music: !this.state.music})
-  }
 
   handleclick() {
   if (this.state.clicked===false) {
@@ -145,33 +158,48 @@ class Interval extends React.Component {
 }
 
 
-
-
   render() {
+    const {
+      act_set_time,
+      clicked,
+      status,
+      currentIdx
+    } = this.state;
+
+    //const act_set_time = this.state.act_set_time;
+    //const clicked = this.state.clicked;
+    let currentEx = this.ex_list[currentIdx];
+    let total_min_by_ex = Math.floor(this.real_total[currentIdx]/60);
+    let total_sec_by_ex = this.real_total[currentIdx]-total_min_by_ex*60;
 
     return (
       <div>
         <div className="top-bar">
-            <p onClick={this.resultPost.bind(this)} className="button-up"> 완료 </p>
+            <p onClick={this.resultPost} className="button-up"> 완료 </p>
         </div>
         <div className="back-ground">
           <div>
-            <p className="current-ex">{this.ex_list[this.state.currentIdx].exname}</p>
+            <p className="current-ex">{currentEx.exname}</p>
             <div className="toptimer">
-              <p className="time"> {Math.floor(this.state.act_set_time/60)}: </p>
-              <p className="time"> {this.ex_list[this.state.currentIdx].action_sec-Math.floor(this.ex_list[this.state.currentIdx].action_sec/60)*60} </p>
+              <p className="time"> Set.{currentEx.set} Time.  </p>
+              <p className="time"> {Math.floor(this.real_total[currentIdx]/60)}:{total_sec_by_ex.toString()} </p>
             </div>
             <div className="clock-div">
               <div className="countdown-clock">
+                <Progressbar
+                  total_time={(Number(currentEx.action_min)*60) + Number(currentEx.action_sec)}
+                  status_change={this.state.set_status}
+                  stop={this.state.status}
+                />
               </div>
             </div>
             <div className="main-ticking">
-              <p className="ticking">{Math.floor(this.state.act_set_time/60)} :</p>
-              <p className="ticking">{this.state.act_set_time-Math.floor(this.state.act_set_time/60)*60}</p>
+              <p className="ticking">0{Math.floor(act_set_time/60)}:</p>
+              <p className="ticking">{act_set_time-Math.floor(act_set_time/60)*60}</p>
             </div>
             <div className="button-wrapper">
-              <div className={`kingofbutton ${this.state.clicked ? 'active' : ''}`}
-                onClick={this.handleclick.bind(this)}>
+              <div className={`kingofbutton ${clicked ? 'active' : ''}`}
+                onClick={this.handleclick}>
                 <div className="stopbutton">
                 </div>
                 <div className="stopbutton">
@@ -180,16 +208,16 @@ class Interval extends React.Component {
             </div>
             <div className="total-status-wrapper">
               <div className="total-status">
-                <p className="totaltime"> {this.getTotalTime}:</p>
-                <p className="totaltime"> {this.state.act_set_time-Math.floor(this.state.act_set_time/60)*60} </p>
+                <p className="totaltime"> {this.total_min}분:{this.total_sec.toString().slice(0,2)}초 </p>
+
                 <div className="status-wrapper">
-                  <div className={` ${this.state.status ? 'status' : ''}`}>
+                  <div className={` ${status ? 'status' : ''} `}>
                   {
                     this.ex_list.map((el, idx) => (
                       <Selectedcircle
                       key={idx}
                       info={el}
-                      status={this.state.currentIdx >= idx}
+                      status={currentIdx >= idx}
                     />
                     ))
                   }
