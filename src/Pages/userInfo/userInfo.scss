@@ -3,8 +3,9 @@
   width: 40px;
   line-height: 40px;
   font-size: 18px;
-  float: left;
-  margin-left: 35px;
+  right: 0px;
+  position:absolute;
+
 }
 .userinfotitl {
   color: white;
@@ -15,32 +16,69 @@
   padding-left: 23px;
 }
 
-
-.skip {
-  color: #63636B;
-  text-align: right;
-  margin-right: 22px;
-  margin-top: 19px;
-  font-size: 20px;
-  margin-bottom: 44px;
+.female {
+  color: white;
+  width: 40px;
+  line-height: 40px;
+  font-size: 18px;
+  right: 33px;
+  position: absolute;
 }
+.male {
+  color: white;
+  width: 40px;
+  line-height: 40px;
+  font-size: 18px;
+  right: 100px;
+  position: absolute;
+}
+.usrtitl {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  display: inline-block;
+  width: 90px;
+}
+
+
 .prefer {
   text-align: left;
   padding: 11px 10px 0px 13px;
 }
 
-.radioinput {
+.radiom {
   background: none;
   width: 20px;
   margin: 15px 10px;
   line-height: 40px;
-  float: right;
   border: none;
   color: white;
-  float: left;
-
+  position: absolute;
+  right: 75px;
 }
 
+.radiof {
+  background: none;
+  width: 20px;
+  margin: 15px 10px;
+  line-height: 40px;
+  border: none;
+  color: white;
+  position: absolute;
+  right: 20px;
+}
 .genderbox {
   float: right;
+}
+
+.weihei {
+  background: none;
+  width: 50px;
+  line-height: 40px;
+  font-size: 18px;
+  border: none;
+  color: white;
+  float: right;
+  margin-right: 40px;
+  font-family: 'S-CoreDream-6Bold';
 }

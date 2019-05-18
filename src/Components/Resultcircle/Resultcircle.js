@@ -1,8 +1,8 @@
 import React from 'react';
-import './Selectedcircle.scss';
+import './Resultcircle.scss';
 import { withRouter } from 'react-router-dom';
 
-class Selectedcircle extends React.Component {
+class Resultcircle extends React.Component {
 
   constructor(props) {
   super(props);
@@ -15,7 +15,7 @@ class Selectedcircle extends React.Component {
   render() {
 
     return (
-      <div className={`blocking ${this.props.status ? 'status' : ''}`}>
+      <div>
         <span className="small_dot"></span>
         <p className="selected-ex-text">{this.props.info.exname}</p>
       </div>
@@ -23,4 +23,4 @@ class Selectedcircle extends React.Component {
   }
 }
 
-export default Selectedcircle
+export default Resultcircle

@@ -8,7 +8,7 @@ $buttoncl: #D5FF45;
 
 body {
   background-color: $backgroundcl;
-  font-family: 'S-CoreDream-3Light', 'S-CoreDream-9Black';
+  font-family: 'S-CoreDream-3Light', 'S-CoreDream-9Black', 'S-CoreDream-3Light';
 
 }
 
@@ -42,10 +42,10 @@ body {
 .userinfowrap {
   position: relative;
   width: 100%;
-  text-align: center;
   padding-top: 10px;
   font-family: 'S-CoreDream-6Bold';
   color: white;
+
 }
 
 .wrapper {
@@ -55,9 +55,9 @@ body {
   margin-top: 120px;
 }
 .boxposition {
-  display: inline-block;
-  // width: 77%;
-  float: center;
+  display: block;
+  width: 375px;
+  margin: 0 auto;
 }
 
 .subjectlogsignup {
@@ -107,11 +107,11 @@ body {
   background: none;
   width: 150px;
   line-height: 40px;
-  float: right;
   font-size: 18px;
   border: none;
   color: white;
-  float: right;
+  right: 0px;
+  position: absolute;
   font-family: 'S-CoreDream-6Bold'
 
 }
