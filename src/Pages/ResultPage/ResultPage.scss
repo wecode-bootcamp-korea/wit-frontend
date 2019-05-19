@@ -22,7 +22,6 @@
   width: 95%;
   background-color: #222234;
   border-radius: 30px;
-  display: inline-block;
 }
 
 
@@ -36,7 +35,15 @@
 }
 
 
-.result_bar {
+.result-bar {
+  width: 345px;
+  height: 80px;
+  border-color: #D5FF45;
+  border-style: solid;
+  margin-top: 35px;
+  margin-left: 15px;
+  padding-top: 30px;
+  text-align: center;
 
 }
 
@@ -51,7 +58,7 @@
 }
 
 .ment-today{
-  margin-top: 80px;
+  margin-top: 29px;
 }
 
 .final-ment{
@@ -74,8 +81,12 @@
   border-width: 5px;
   height: 70px;
   width: 250px;
-  margin-top:15px;
+  margin-top:25px;
+  margin-bottom:15px;
   margin-left: 50px;
+  outline:0;
+  border:0;
+  border-radius: 35px;
 }
 
 
@@ -86,5 +97,13 @@
   font-weight: bold;
   margin-block-start: unset;
   margin-block-end: unset;
-  padding-top:15px;
+
+}
+
+
+.result-bar-text {
+  color: #D5FF45;
+  font-size: 17px;
+  font-weight: bold;
+  margin-left :10px;
 }

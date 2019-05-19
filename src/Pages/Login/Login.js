@@ -19,7 +19,7 @@ class Login extends React.Component {
   } //초기화되는 값을 constructor에서 정해준다.
 
 
-  handleClick() {
+  handleClick=()=> {
 
     fetch('http://13.125.249.35:8000/user/signin', {
       method:'POST',
@@ -111,7 +111,7 @@ goToSignUp = () => {
           // </div>*/}
         </div>
 
-        <p onClick={this.handleClick.bind(self)}>
+        <p onClick={this.handleClick}>
         id: {this.state.userId} <br/>
         pw: {this.state.Password}
         </p>
