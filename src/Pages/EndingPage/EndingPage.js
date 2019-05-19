@@ -14,7 +14,7 @@ goToSelectExercise = () => {
 }
 
 goToResult = () => {
-  this.props.history.push('/ResultPage');
+  this.props.history.push('/Result');
 }
 
 

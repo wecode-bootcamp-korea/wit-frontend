@@ -74,7 +74,7 @@ class ResultPage extends React.Component {
 }
   // 엔딩페이지로 가는 함수
   goToEndingPage=()=> {
-    this.props.history.push('/EndingPage');
+    this.props.history.push('/Ending');
   }
 
   render() {
@@ -86,8 +86,9 @@ class ResultPage extends React.Component {
         </div>
 
         <div className="blocking">
-          {this.ex_list.map((el) => {
+          {this.ex_list.map((el, idx) => {
             return (<Resultcircle
+                    key={idx}
                     info={el}
                     />)})}
         </div>
