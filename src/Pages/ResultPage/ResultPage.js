@@ -29,7 +29,7 @@ class ResultPage extends React.Component {
       post_list.push({'activation_time':'00:'+this.ex_list[i].action_min+":"+this.ex_list[i].action_sec,
       'break_time' : '00:'+this.ex_list[i].break_min+":"+this.ex_list[i].break_sec,
       'train_id': this.ex_list[i].exname,
-      'set' : this.ex_list[i].set})
+      'train_set' : this.ex_list[i].set})
     }
     console.log('post_list:', post_list)
     console.log('valeu', post_list[0].train_id)
