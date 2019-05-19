@@ -19,7 +19,8 @@ class Login extends React.Component {
   } //초기화되는 값을 constructor에서 정해준다.
 
 
-  handleClick= ()=> {
+
+  handleClick=()=> {
 
     fetch('http://13.125.249.35:8000/user/signin', {
       method:'POST',
