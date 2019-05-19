@@ -15,6 +15,9 @@ import ResultPage from './Pages/ResultPage/ResultPage'
 import ModalRe from './Pages/Modal/ModalRe'
 import ModalUnre from './Pages/Modal/ModalUnre'
 import Main from './Pages/Main/Main'
+import EndingPage from './Pages/EndingPage/EndingPage'
+import SeducePage from './Pages/SeducePage/SeducePage'
+
 
 class Routes extends React.Component {
   render() {
@@ -31,6 +34,8 @@ class Routes extends React.Component {
           <Route exact path="/ModalRe" component={ModalRe} />
           <Route exact path="/ModalUnre" component={ModalUnre} />
           <Route exact path="/" component={Main} />
+          <Route exact path="/EndingPage" component={EndingPage} />
+          <Route exact path="/SeducePage" component={SeducePage} />
         </Switch>
       </Router>
     )
