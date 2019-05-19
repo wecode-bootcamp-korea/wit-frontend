@@ -55,6 +55,12 @@ class ResultPage extends React.Component {
 
   resultPost=()=> {
     let token = localStorage.getItem('wit-token')
+
+    if (!token) {
+      this.props.history.push('/Seduce')
+    }
+
+    else {
     fetch('http://13.125.249.35:8000/train', {
       method:'POST',
       headers: {
@@ -71,6 +77,7 @@ class ResultPage extends React.Component {
       // 운동 결과를 저장하고 마지막 엔딩 페이지로 연결
       this.goToEndingPage()
   })
+}
 }
   // 엔딩페이지로 가는 함수
   goToEndingPage=()=> {
