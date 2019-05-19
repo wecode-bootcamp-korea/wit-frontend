@@ -18,22 +18,10 @@ class Login extends React.Component {
     //확장해서 쓰려면 constructor에 super써야 모든 메소드 빌려와서 쓷나는말.
   } //초기화되는 값을 constructor에서 정해준다.
 
-  componentDidMount() {
-    console.log('componentDidMount')
-
-  }
-  componentDidUpdate() {
-    console.log('componentDidUpdate')
-
-  }
-  componentWillUnmount() {
-    console.log('componentWillUnmount')
-
-  }
 
   handleClick() {
 
-    fetch('http://localhost:8000/user/signin', {
+    fetch('http://13.125.249.35:8000/user/signin', {
       method:'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -79,8 +67,6 @@ goToSignUp = () => {
   // }
   render() {
 
-
-    let self = this;
     return (
       <div className="wrapper">
         <div className="boxposition">
