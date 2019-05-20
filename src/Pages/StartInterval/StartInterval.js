@@ -99,6 +99,11 @@ class Interval extends React.Component {
       }
       this.setState({ act_set_time: this.state.act_set_time - 1 });
     }, 1000);
+
+    if (this.ex_list[this.ex_list.length-1].set === 0 ){
+      this.stop()
+    }
+
   }
 
   stop() {
@@ -119,42 +124,12 @@ class Interval extends React.Component {
 }
 
   resultPost() {
-    let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3Nn0.5X9F-dZIH9e7znOTQQfhE8cUsGVjPoxrWQk_Ni01edI"
-
-    // let allList = this.ex_list.map(el => {
-    //   return ({
-    //     activation_time: el.action_min,
-    //     break_time: el.break_min,
-    //     train_set: el.set,
-    //     calorie_consumption: el.set,
-    //     train_id: 7,
-    //   })
-    // })
-
-    fetch('http://13.125.249.35:8080/train', {
-      method:'POST',
-      headers: {
-        'Authorization': token,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        activation_time: "00:01:18",
-        break_time: "00:01:18",
-        train_set: 2,
-        calorie_consumption: "65566",
-        train_id: 7,
-      })
-    })
-
-    .then(response => response.json())
-    .then(response => {
 
       this.goToResultPage()
-  })
 }
 
   goToResultPage() {
-    this.props.history.push('/ResultPage')
+    this.props.history.push('/Result')
 }
 
 
