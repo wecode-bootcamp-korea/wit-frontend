@@ -14,9 +14,11 @@ class UserInfo extends React.Component {
     super(props);
     this.state  = {
       preferry: [],
+      pkKeyList: [],
       active: false,
       makelist: {},
       truelist: [],
+      pklist: {},
       gender:'',
       nickname: '',
       birth: '',
@@ -27,25 +29,22 @@ class UserInfo extends React.Component {
   }
 
   componentDidMount() {
-    let token = localStorage.getItem('wit-token') || '';
-    fetch('http://13.125.249.35:8080/user/detail', {
-      headers: {
-          'Authorization': token,
-      }
-    })
+      fetch('http://13.125.249.35:8000/train/all')
     .then(response => response.json())
     .then(response => {
-       console.log(response.data);
-    })
-
-
-    fetch('http://13.125.249.35:8080/train/all')
-    .then(response => response.json())
-    .then(response => {
+      let pkKeyList = this.state.pkKeyList;
+      let preferry = this.state.preferry;
       for (var i=0; i<response.length; i++) {
 
-        this.state.preferry.push(response[i]["fields"]["train_name"]);
+        pkKeyList.push(response[i]["pk"]);
+        preferry.push(response[i]["fields"]["train_name"])
       }
+      this.setState({
+        preferry : this.state.preferry,
+        pkKeyList : this.state.pkKeyList
+      })
+
+      // console.log('componentDidMount')
 
       //let listfrback = response["preferred_ex"]["train_name"];
       // for (var i=0; i<this.state.preferry.length; i++){
@@ -55,6 +54,24 @@ class UserInfo extends React.Component {
       //     }
       //   }
       // }
+      console.log('componentDidMount', this.state.pkKeyList);
+      console.log('componentDidMount', this.state.preferry);
+
+    });
+
+    let token = localStorage.getItem('wit-token') || '';
+
+    if (token === true) {
+      fetch('http://13.125.249.35:8080/user/detail', {
+        headers: {
+            'Authorization': token,
+        }
+      })
+      .then(response => response.json())
+      .then(response => {
+         console.log(response.data);
+      })
+
       this.setState({
         // preferry: this.state.preferry,
         //nickname: get정보. response[i]
@@ -63,8 +80,12 @@ class UserInfo extends React.Component {
         //weight: get||null,
         //height: get || null
       })
-      console.log(this.state.preferry);
-    });
+
+    }
+    // else {
+    //   this.props.history.push('/SelectExercise')
+    // }
+
   }
 
   skipThisPage = () => {
@@ -72,29 +93,37 @@ class UserInfo extends React.Component {
   }
 
   goToSelectExercise2 = () => {
-    console.log(this.state.makelist);
-    let onelist = this.state.makelist;
-    for (var key in onelist) {
-      if (onelist[key] === true) {
-        this.state.truelist.push(key)
+    console.log(this.state.pklist);
+    let yetString = [];
+    for (var key in this.state.pklist) {
+
+      if (this.state.pklist[key] === true) {
+        yetString.push(key)
       }
     }
+    let somelist = yetString.map(num => Number(num));
+    console.log('somelist', somelist);
 
-    console.log(this.state.truelist)
-
-    this.setState({
-      truelist: this.state.truelist
-    })
+    if (this.state.gender === "남") {
+      return this.state.gender = true;
+    } else if (this.state.gender === "여") {
+      return this.state.gender = false;
+    }
     let data = {
-      nickname: this.state.nickname,
-      gender: this.state.gender,
-      birth: this.state.birth,
-      weight: this.state.weight,
-      height: this.state.height,
-      truelist: this.state.truelist
+      // nickname: this.state.nickname,
+      user_sex: this.state.gender,
+      user_birthdate: this.state.birth,
+      user_weight: this.state.weight,
+      user_height: this.state.height,
+      train_ids: somelist
     };
+    console.log(data)
+    return;
+    // let nickname = {
+    //   user_nickname: this.state.nickname
+    // }
 
-    fetch('http://localhost:8000/user', {
+    fetch('http://13.125.249.35:8000/train', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -105,6 +134,18 @@ class UserInfo extends React.Component {
       .then(response => {
          console.log(response['message'])
       })
+
+      // fetch('http://13.125.249.35:8000/train', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify(nickname)
+      // })
+      //   .then(response => response.json())
+      //   .then(response => {
+      //      console.log(response['message'])
+      //   })  nickname 다른주소로 보내기..
     this.props.history.push('/SelectExercise');
     }
   handleChange = (e) => {
@@ -117,12 +158,18 @@ class UserInfo extends React.Component {
   getExId = (text, selected) => {
      let mylist = this.state.makelist;
     mylist[text] = selected;
-
+    // this.state[pkKeyList] = selected;
+    let i = this.state.preferry.indexOf(text);
     console.log(this.state.makelist)
+    // this.state.pklist[]
+    let anotherlist = this.state.pklist;
+    anotherlist[i+1] = selected;
+    // push(this.state.pkKeyList[i])
     this.setState({
        makelist : mylist,
+       pklist : anotherlist
      })
-    console.log(text, selected)
+    // console.log(text, selected)
     }
 
   render() {
@@ -130,8 +177,6 @@ class UserInfo extends React.Component {
     return (
       <div>
         <div className="userinfowrap">
-
-
           <div className="boxposition">
           <Skip
           click={this.skipThisPage}/>
@@ -202,6 +247,7 @@ class UserInfo extends React.Component {
                 />
                 <span className="usrcl">CM</span>
               </div>
+
               <p className="prefer">선호운동</p>
               {this.state.preferry.map((item,i) => {
                 let selected;
