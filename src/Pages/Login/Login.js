@@ -39,7 +39,7 @@ class Login extends React.Component {
         localStorage.setItem('wit-token', response.access_token);
   }
 
-      if (response.success) {
+      if (response) {
         alert('로그인이 완료되었습니다!');
         this.props.history.push('/SelectExercicse');
   }
