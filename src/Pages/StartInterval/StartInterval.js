@@ -99,6 +99,11 @@ class Interval extends React.Component {
       }
       this.setState({ act_set_time: this.state.act_set_time - 1 });
     }, 1000);
+
+    if (this.ex_list[this.ex_list.length-1].set === 0 ){
+      this.stop()
+    }
+
   }
 
   stop() {
