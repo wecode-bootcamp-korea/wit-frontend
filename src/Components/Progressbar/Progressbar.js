@@ -92,20 +92,6 @@ class Progressbar extends React.Component {
               }
             }}
           />
-          <VictoryAnimation duration={1000} data={this.state}>
-            {(newProps) => {
-              return (
-                <VictoryLabel
-                  textAnchor="middle"
-                  verticalAnchor="middle"
-                  x={200}
-                  y={200}
-                  text={`${Math.round(newProps.percent)}%`}
-                  style={{ fontSize: 45 }}
-                />
-              );
-            }}
-          </VictoryAnimation>
         </svg>
       </div>
     );
