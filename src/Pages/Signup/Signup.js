@@ -2,7 +2,7 @@ import React from 'react';
 import './Signup.scss';
 import '../../Style/config.scss'
 import Button from '../../Components/Button/Button'
-
+import {withRouter} from 'react-router-dom';
 
 class Signup extends React.Component {
   constructor() {
@@ -112,6 +112,10 @@ class Signup extends React.Component {
       console.log("OK");
     }
 }
+goToUserInfo = () => {
+  this.props.history.push('/UserInfo');
+}
+
 
 handleSubmit = (e) => {
    if (this.state.password !== this.state.rePassword){
@@ -137,9 +141,14 @@ handleSubmit = (e) => {
           if (response.message === 'email already exists') {
             alert("이미 존재하는 이메일입니다.");
           }
-           //alert("회원가입 성공!");
+          if (response.success) {
+            alert('회원가입이 완료되었습니다!');
+            this.props.history.push('/userInfo');
+          }
+
+
        });
-   } // The form will submit
+   }
 }
   render() {
 
@@ -195,4 +204,4 @@ handleSubmit = (e) => {
   }
 }
 
-export default Signup;
+export default withRouter(Signup);

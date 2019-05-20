@@ -69,7 +69,7 @@ class SetTimer extends React.Component {
     } else if (list != null) {
       list.push({
       exname: this.props.location.state.name,
-      action_min: Number(this.state.action_min),
+      action_min: this.state.action_min,
       action_sec: this.state.action_sec,
       break_min: this.state.break_min,
       break_sec: this.state.break_sec,
@@ -163,7 +163,7 @@ class SetTimer extends React.Component {
             </div>
             <div className="setResult"> TOTAL </div>
             <div className="setResult"> {min_result}분 {sec_result}초</div>
-            <div className="setResult"> 200 Kcal </div>
+
 
           </div>
           <div id="blanksignup">

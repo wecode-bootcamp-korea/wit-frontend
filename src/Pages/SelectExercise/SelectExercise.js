@@ -20,7 +20,7 @@ class Choice extends React.Component {
 componentDidMount() {
   console.log('componentDidMount')
 
-    fetch('http://13.125.249.35:8080/train/all')
+    fetch('http://13.125.249.35:8000/train/all')
     .then(response => response.json())
     .then(response => {
 
@@ -62,9 +62,10 @@ componentDidMount() {
 
           <div className="back-ground">
             <div className={` ${this.state.clicked ? 'active' : ''}`}>
-              {this.state.default_data.map((el) => {
+              {this.state.default_data.map((el, idx) => {
                 return (
                     <Selectcircle
+                      key={idx}
                       clicked={this.state.chosen_list.map(el=>el.exname).indexOf(el.train_name) !== -1}
                       info={el}
                     />
