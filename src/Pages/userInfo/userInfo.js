@@ -20,7 +20,7 @@ class UserInfo extends React.Component {
       truelist: [],
       pklist: {},
       gender:'',
-      nickname: '',
+      // nickname: '',
       birth: '',
       weight:'',
       height:'',
@@ -29,39 +29,40 @@ class UserInfo extends React.Component {
   }
 
   componentDidMount() {
+
       fetch('http://13.125.249.35:8000/train/all')
-    .then(response => response.json())
-    .then(response => {
-      let pkKeyList = this.state.pkKeyList;
-      let preferry = this.state.preferry;
-      for (var i=0; i<response.length; i++) {
+      .then(response => response.json())
+      .then(response => {
+        let pkKeyList = this.state.pkKeyList;
+        let preferry = this.state.preferry;
+        for (var i=0; i<response.length; i++) {
 
-        pkKeyList.push(response[i]["pk"]);
-        preferry.push(response[i]["fields"]["train_name"])
-      }
-      this.setState({
-        preferry : this.state.preferry,
-        pkKeyList : this.state.pkKeyList
-      })
+          pkKeyList.push(response[i]["pk"]);
+          preferry.push(response[i]["fields"]["train_name"])
+        }
+        this.setState({
+          preferry : this.state.preferry,
+          pkKeyList : this.state.pkKeyList
+        })
 
-      // console.log('componentDidMount')
+        // console.log('componentDidMount')
 
-      //let listfrback = response["preferred_ex"]["train_name"];
-      // for (var i=0; i<this.state.preferry.length; i++){
-      //   for (var j=0; j<listfrback.length; j++){
-      //     if (this.state.preferry[i] === listfrback[j]) {
-      //       this.setState({ active: true });
-      //     }
-      //   }
-      // }
-      console.log('componentDidMount', this.state.pkKeyList);
-      console.log('componentDidMount', this.state.preferry);
+        //let listfrback = response["preferred_ex"]["train_name"];
+        // for (var i=0; i<this.state.preferry.length; i++){
+        //   for (var j=0; j<listfrback.length; j++){
+        //     if (this.state.preferry[i] === listfrback[j]) {
+        //       this.setState({ active: true });
+        //     }
+        //   }
+        // }
+        console.log('componentDidMount', this.state.pkKeyList);
+        console.log('componentDidMount', this.state.preferry);
 
-    });
+      });
 
     let token = localStorage.getItem('wit-token') || '';
 
-    if (token === true) {
+    if (token) {
       fetch('http://13.125.249.35:8080/user/detail', {
         headers: {
             'Authorization': token,
@@ -182,7 +183,7 @@ class UserInfo extends React.Component {
           click={this.skipThisPage}/>
             <p className="userinfotitl">선택정보<br/>입력</p>
             <div className="inputboxes-userinfo">
-              <div className="timerbox">
+            {/*  <div className="timerbox">
                 <label className="usrtitl">닉네임</label>
                  <input
                    className="txtinput"
@@ -191,7 +192,7 @@ class UserInfo extends React.Component {
                    value={this.state.nickname} //get해야되나?
                    onChange={this.handleChange}
                  />
-              </div>
+              </div> */}
               <div className="timerbox">
                 <label className="usrtitl">성별</label>
                   <div className="genderbox">
@@ -251,12 +252,12 @@ class UserInfo extends React.Component {
               <p className="prefer">선호운동</p>
               {this.state.preferry.map((item,i) => {
                 let selected;
-
-                if (listfrback.indexOf(item) === -1) {
-                  selected = false;
-                } else {
-                  selected = true;
-                }
+                //
+                // if (listfrback.indexOf(item) === -1) {
+                //   selected = false;
+                // } else {
+                //   selected = true;
+                // }
 
                 return (
                   <ExButton
@@ -264,7 +265,7 @@ class UserInfo extends React.Component {
                     text={item}
                     getExId={this.getExId}
                     // click={this.goToSelectExercise2}
-                    selected={listfrback.indexOf(item) !== -1} //orselected={selected}
+                    // selected={listfrback.indexOf(item) !== -1} //orselected={selected}
                   />
               )})}
             </div>
