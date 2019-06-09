@@ -1,17 +1,16 @@
 import React from 'react';
-import './userInfo.scss';
-import '../../Style/config.scss'
+import { withRouter } from 'react-router-dom';
 import Button from '../../Components/Button/Button'
 import ExButton from '../../Components/Button/ExButton'
-import { withRouter } from 'react-router-dom';
 import Skip from '../../Components/Button/Skip'
+import './userInfo.scss';
+import '../../Style/config.scss'
 
-//let listfrback = [{ name: 'plank', id: 40}, {name: 'push up', id: 8}];
-let listfrback = ['plank'];
 
 class UserInfo extends React.Component {
   constructor(props) {
     super(props);
+
     this.state  = {
       preferry: [],
       pkKeyList: [],
@@ -20,7 +19,6 @@ class UserInfo extends React.Component {
       truelist: [],
       pklist: {},
       gender:'',
-      // nickname: '',
       birth: '',
       weight:'',
       height:'',
@@ -35,7 +33,7 @@ class UserInfo extends React.Component {
       .then(response => {
         let pkKeyList = this.state.pkKeyList;
         let preferry = this.state.preferry;
-        for (var i=0; i<response.length; i++) {
+        for (var i = 0; i < response.length; i ++) {
 
           pkKeyList.push(response[i]["pk"]);
           preferry.push(response[i]["fields"]["train_name"])
@@ -45,16 +43,7 @@ class UserInfo extends React.Component {
           pkKeyList : this.state.pkKeyList
         })
 
-        // console.log('componentDidMount')
 
-        //let listfrback = response["preferred_ex"]["train_name"];
-        // for (var i=0; i<this.state.preferry.length; i++){
-        //   for (var j=0; j<listfrback.length; j++){
-        //     if (this.state.preferry[i] === listfrback[j]) {
-        //       this.setState({ active: true });
-        //     }
-        //   }
-        // }
         console.log('componentDidMount', this.state.pkKeyList);
         console.log('componentDidMount', this.state.preferry);
 
@@ -110,19 +99,22 @@ class UserInfo extends React.Component {
     } else if (this.state.gender === "여") {
       return this.state.gender = false;
     }
-    let data = {
-      // nickname: this.state.nickname,
-      user_sex: this.state.gender,
-      user_birthdate: this.state.birth,
-      user_weight: this.state.weight,
-      user_height: this.state.height,
+
+    const {
+      gender,
+      birth,
+      weight,
+      height
+    } = this.state
+
+    const data = {
+      user_sex: gender,
+      user_birthdate: birth,
+      user_weight: weight,
+      user_height: height,
       train_ids: somelist
     };
     console.log(data)
-    return;
-    // let nickname = {
-    //   user_nickname: this.state.nickname
-    // }
 
     fetch('http://13.125.249.35:8000/train', {
       method: 'POST',
@@ -183,16 +175,6 @@ class UserInfo extends React.Component {
           click={this.skipThisPage}/>
             <p className="userinfotitl">선택정보<br/>입력</p>
             <div className="inputboxes-userinfo">
-            {/*  <div className="timerbox">
-                <label className="usrtitl">닉네임</label>
-                 <input
-                   className="txtinput"
-                   name="nickname"
-                   type="text"
-                   value={this.state.nickname} //get해야되나?
-                   onChange={this.handleChange}
-                 />
-              </div> */}
               <div className="timerbox">
                 <label className="usrtitl">성별</label>
                   <div className="genderbox">
