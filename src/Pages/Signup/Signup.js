@@ -89,29 +89,7 @@ class Signup extends React.Component {
       console.log("OK");
     }
 }
-  handleConfirmrePassword = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value
-    })
-    console.log('pw', e.target.value === this.state.password, typeof e.target.value, e.target.value.length)
-    if (e.target.value !== this.state.password) {
-      this.setState({
-        pMessage: "비밀번호가 일치하지 않습니다."
-      })
-      console.log("ERROR");
-    }
-    else if (e.target.value === '') {
-      this.setState({
-        pMessage: ''
-      })
-    }
-    else if (e.target.value === this.state.password) {
-      this.setState({
-        pMessage: "비밀번호가 일치합니다."
-      })
-      console.log("OK");
-    }
-}
+
 goToUserInfo = () => {
   this.props.history.push('/UserInfo');
 }
@@ -162,34 +140,35 @@ handleSubmit = (e) => {
               className="idpw-input"
               name="userId"
               type="text"
-              placeholder="이메일"
+              placeholder="e-mail"
               value={this.state.userId}
+              onChange={this.handleChange}
+            />
+            <input
+              className="idpw-input"
+              name="nickname"
+              type="text"
+              placeholder="nickname"
+              value={this.state.nickname}
               onChange={this.handleChange}
             />
              <input
                className="idpw-input"
                name="password"
                type="password"
-               placeholder="비밀번호"
+               placeholder="password"
                value={this.state.password}
-               onChange={this.handleConfirmPassword}
+               onChange={this.handleChange}
              />
              <input
                className="idpw-input"
                name="rePassword"
                type="password"
-               placeholder="비밀번호 재입력"
+               placeholder="password check"
                value={this.state.rePassword}
-               onChange={this.handleConfirmrePassword}
-             />
-             <input
-               className="idpw-input"
-               name="nickname"
-               type="text"
-               placeholder="닉네임"
-               value={this.state.nickname}
                onChange={this.handleChange}
              />
+
           </div>
           <p className="maintext">{this.state.pMessage}</p>
           </div>

@@ -20,7 +20,7 @@ class Choice extends React.Component {
 componentDidMount() {
   console.log('componentDidMount')
 
-    fetch('http://13.125.249.35:8000/train/all')
+    fetch('http://127.0.0.1:8000/train/all')
     .then(response => response.json())
     .then(response => {
 
