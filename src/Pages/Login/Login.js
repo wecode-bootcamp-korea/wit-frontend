@@ -1,8 +1,9 @@
+
 import React from 'react';
 import './Login.scss';
-import Button from '../../Components/Button/Button'
 import {withRouter} from 'react-router-dom';
 import '../../Style/config.scss'
+import Button from '../../Components/Button/Button'
 
 class Login extends React.Component {
   constructor() {
@@ -21,7 +22,6 @@ class Login extends React.Component {
 
 
   handleClick=()=> {
-
     fetch('http://13.125.249.35:8000/user/signin', {
       method:'POST',
       headers: {
@@ -45,16 +45,15 @@ class Login extends React.Component {
         this.props.history.push('/SelectExercicse');
   }
 })
-
 }
 
-goToSelectExercise = () => {
-  this.props.history.push('/SelectExercise');
-}
+  goToSelectExercise = () => {
+    this.props.history.push('/SelectExercise');
+  }
 
-goToSignUp = () => {
-  this.props.history.push('/signup');
-}
+  goToSignUp = () => {
+    this.props.history.push('/signup');
+  }
 
   handleChange = (e) => {
     this.setState({

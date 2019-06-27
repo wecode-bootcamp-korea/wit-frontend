@@ -72,6 +72,7 @@ class Interval extends React.Component {
         this.onPlay()
       }
 
+
       //0초 도달하면 ==> 세트가 끝났다는 의미
       if (this.state.act_set_time < 1) {
         this.stop()
@@ -81,10 +82,10 @@ class Interval extends React.Component {
         })
 
         //세트가 0이 되어서 해당 운동이 끝났다.
-
-        if (this.state.set_status < 1 ) {
+        console.log(this.state.set_status);
+        if (this.state.set_status === 0) {
           this.stop()
-          console.log(this.ex_list, this.state.currentIdx+1)
+          console.log(this.state.set_status, this.ex_list, this.ex_list[this.state.currentIdx + 1])
 
           this.setState({
             currentIdx: this.state.currentIdx + 1,
@@ -100,8 +101,9 @@ class Interval extends React.Component {
       this.setState({ act_set_time: this.state.act_set_time - 1 });
     }, 1000);
 
-    if (this.ex_list[this.ex_list.length-1].set === 0 ){
-      this.stop()
+
+    if (this.state.set_status === 1){
+      this.stop();
     }
 
   }
