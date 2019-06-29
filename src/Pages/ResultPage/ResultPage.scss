@@ -1,0 +1,109 @@
+.top-bar {
+  background-color: #161626;
+  height: 60px;
+  margin:0;
+}
+.unify-text {
+  color: white;
+  text-align: center;
+  margin: 0;
+  padding: 15px;
+  font-size: 18px;
+}
+
+.back-ground {
+  background-color: #10101C;
+}
+
+.result-tab{
+  padding-top: 10px;
+  margin-left: 10px;
+  height: 160px;
+  width: 95%;
+  background-color: #222234;
+  border-radius: 30px;
+}
+
+
+.result_active {
+  white-space: nowrap;
+}
+
+.blocking{
+  padding-left: 15px;
+  padding-top: 10px;
+}
+
+
+.result-bar {
+  width: 345px;
+  height: 80px;
+  border-color: #D5FF45;
+  border-style: solid;
+  margin-top: 35px;
+  margin-left: 15px;
+  padding-top: 30px;
+  text-align: center;
+
+}
+
+.result-text{
+  color: #FFFFFF;
+  padding-left:20px;
+  font-size: 23px;
+  font-weight: bold;
+  margin-block-start: unset;
+  margin-block-end: unset;
+
+}
+
+.ment-today{
+  margin-top: 29px;
+}
+
+.final-ment{
+  margin-top: 20px;
+
+}
+
+.result-text2{
+  color: #565662;
+  padding-left:20px;
+  font-size: 30px;
+  font-weight: bold;
+  margin-block-start: unset;
+  margin-block-end: unset;
+}
+
+.final-save-button{
+  background-color: #D5FF45;
+  border-style: solid;
+  border-width: 5px;
+  height: 70px;
+  width: 250px;
+  margin-top:25px;
+  margin-bottom:15px;
+  margin-left: 50px;
+  outline:0;
+  border:0;
+  border-radius: 35px;
+}
+
+
+
+.final-save-text{
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+  margin-block-start: unset;
+  margin-block-end: unset;
+
+}
+
+
+.result-bar-text {
+  color: #D5FF45;
+  font-size: 17px;
+  font-weight: bold;
+  margin-left :10px;
+}

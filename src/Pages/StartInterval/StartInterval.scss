@@ -1,0 +1,119 @@
+.top-bar{
+  padding-top: 15px;
+}
+.button-up {
+  color: #FFFFFF;
+  font-size: 24px;
+  text-align: right;
+  font-weight: bold;
+  margin-right: 25px;
+  margin-block-start: none;
+  margin-top: 3px;
+}
+
+.button-up:hover {
+  color: #D5FF45;
+}
+
+.back-ground {
+  background-color: #10101C;
+  padding-top: 85px
+}
+
+.current-ex{
+  margin-bottom: 0;
+  margin-top:0;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 30px;
+}
+
+.toptimer{
+  text-align: center;
+  padding-top: 20px;
+}
+
+.time {
+  color:#898991;
+  margin-top:0;
+  font-size: 23px;
+  display: inline-block;
+}
+
+
+.ticking {
+  font-size: 50px;
+  color: #FFFFFF;
+  text-align: center;
+  margin-top:29px;
+  margin-bottom:0;
+  display: inline-block;
+}
+
+.kingofbutton {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  margin: auto;
+}
+
+.active .stopbutton  {
+  background-color: #D5FF45;
+}
+
+.stopbutton {
+  width: 8px;
+  height:25px;
+  background-color: #565662;
+  margin: 3px;
+  display: inline-block;
+}
+
+.totaltime {
+  margin-left: 5px;
+  font-size: 26px;
+  color:#FFFFFF;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.totalset {
+  margin-left: 220px;
+  font-size: 26px;
+  color:#FFFFFF;
+  font-weight: bold;
+  display: inline-block;
+
+}
+
+
+
+.button-wrapper {
+  padding-top: 25px;
+}
+
+.total-status-wrapper{
+  display: inline-block;
+}
+
+.total-status {
+  margin-left: 20px;
+  display: flex;
+}
+
+
+.status-wrapper {
+  margin-left: 16px;
+  padding-left: 7px;
+
+}
+
+.main-ticking {
+  display:flex;
+  padding-left:130px;
+
+}
+
+.status .small_dot{
+  background-color: #D5FF45;
+}

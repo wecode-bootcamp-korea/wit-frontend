@@ -1,0 +1,22 @@
+@import '../../Style/config.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+
+.spanblock {
+  text-align: center;
+}
+
+#blanklogin {
+  margin: 100px;
+}
+
+.login-password-input {
+  color: red;
+  font-size: 20px;
+  padding: 10px 20px;
+  margin: 100px;
+  border: 2px solid black;
+}

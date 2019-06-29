@@ -1,0 +1,23 @@
+@import '../../Style/config';
+
+.btn {
+  width : 201px;
+  height: 57px;
+  font-size: 20px;
+  margin: 10px;
+  border: 2px solid black;
+  cursor: pointer;
+  color: $backgroundcl;
+  padding: 17px 71 72px;
+  background-color: $buttoncl;
+  border-radius: 50px;
+  font-family: S-CoreDream-3Light;
+  font-weight: 900;
+  border-style: none;
+
+  &:hover {
+    opacity: 0.8;
+    background-color: #93b814;
+
+  }
+}

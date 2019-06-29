@@ -1,0 +1,128 @@
+@import '../../Style/config.scss';
+
+.modalposition {
+  width: 375px;
+  display: block;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.modwit {
+  color: $buttoncl;
+  font-size: 28px;
+  margin: 86px 0 44px;
+
+}
+
+.modmenu {
+  color: white;
+  font-size: 28px;
+  margin-bottom: 28px;
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+}
+
+.modalbtng {
+
+}
+
+.modalbtnw {
+
+}
+
+#phrase {
+  color: #565662;
+}
+
+.blackbtn {
+  background-color: transparent;
+  color: white;
+  font-size: 20px;
+  display: block;
+  width : 201px;
+  height: 57px;
+  border: 2px solid black;
+  cursor: pointer;
+  font-family: 'S-CoreDream-3Light';
+  font-weight: 600;
+  padding: 17px 71 72px;
+  border-radius: 50px;
+  font-weight: 900;
+  border-style: none;
+  margin: 28px auto 33px;
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+}
+
+.greenbtn {
+  background-color: $buttoncl;
+  color: black;
+  font-size: 20px;
+  display: block;
+  width : 201px;
+  height: 57px;
+  border: 2px solid black;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'S-CoreDream-3Light';
+  color: $backgroundcl;
+  padding: 17px 71 72px;
+  border-radius: 50px;
+  font-weight: 900;
+  border-style: none;
+  margin: 163px auto 0px;
+
+  &:hover {
+    opacity: 0.8;
+    background-color: #93b814;
+    cursor: pointer;
+  }
+}
+.greenlogout {
+  background-color: $buttoncl;
+  color: black;
+  font-size: 20px;
+  display: block;
+  width : 201px;
+  height: 57px;
+  border: 2px solid black;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'S-CoreDream-3Light';
+  color: $backgroundcl;
+  padding: 17px 71 72px;
+  border-radius: 50px;
+  font-weight: 900;
+  border-style: none;
+  margin: 163px auto 53px;
+
+  &:hover {
+    opacity: 0.8;
+    background-color: #93b814;
+    cursor: pointer;
+  }
+
+}
+
+.modalft {
+  font-size: 20px;
+  color: black;
+}
+
+.close {
+  color: white;
+  background-color: transparent;
+  font-weight: 900;
+  border-style: none;
+  float: right;
+  font-family: 'S-CoreDream-6Bold';
+  font-size: 30px;
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+}
