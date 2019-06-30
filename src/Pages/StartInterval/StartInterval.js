@@ -71,41 +71,62 @@ class Interval extends React.Component {
       if (this.state.act_set_time === 6 ) {
         this.onPlay()
       }
-
+      console.log("현재 운동의 set 상태 set_status", this.state.set_status);
+      console.log("현재 currentIdx", this.state.currentIdx);
+      console.log("현재 운동의 선택한 세트 수 this.ex_list[this.state.currentIdx].set", this.ex_list[this.state.currentIdx].set)
 
       //0초 도달하면 ==> 세트가 끝났다는 의미
       if (this.state.act_set_time < 1) {
         this.stop()
-        this.setState({
-          set_status: this.state.set_status - 1,
-          act_set_time: (Number(this.ex_list[this.state.currentIdx].action_min)*60) + Number(this.ex_list[this.state.currentIdx].action_sec)
-        })
+
+        this.setState(
+          {
+            set_status: this.state.set_status - 1,
+            act_set_time: (Number(this.ex_list[this.state.currentIdx].action_min)*60) + Number(this.ex_list[this.state.currentIdx].action_sec)
+        }
+      )
 
         //세트가 0이 되어서 해당 운동이 끝났다.
-        console.log(this.state.set_status);
-        if (this.state.set_status === 0) {
+        console.log("현재 운동의 set가 1개씩 주는 상태 체크 set_status", this.state.set_status);
+        console.log("선택한 운동의 갯수 ex_list", this.ex_list.length);
+        if (this.state.set_status  === 1 && this.state.currentIdx === this.ex_list.length-1) {
+          console.log("마지막 운동과 동시에 남은 세트가 0 일때 멈춰지나?")
+          this.stop();
+        }
+
+        if (this.state.set_status === 0 && this.state.currentIdx !== this.ex_list.length-1) {
           this.stop()
           console.log(this.state.set_status, this.ex_list, this.ex_list[this.state.currentIdx + 1])
 
-          this.setState({
-            currentIdx: this.state.currentIdx + 1,
-            set_status: this.ex_list[this.state.currentIdx].set,
-            act_set_time: (Number(this.ex_list[this.state.currentIdx + 1].action_min)*60) + Number(this.ex_list[this.state.currentIdx + 1].action_sec)
-          });
-        }
-
+          this.setState(
+            {
+              currentIdx: this.state.currentIdx + 1
+          }, () => this.setState(
+              {
+                set_status: this.ex_list[this.state.currentIdx].set,
+                act_set_time: (Number(this.ex_list[this.state.currentIdx].action_min)*60) + Number(this.ex_list[this.state.currentIdx].action_sec)
+          })
+        )
+      }
         //setTimeOut(() => {
             this.start();
         //}, this.ex_list[this.state.currentIdx].break_min*1000)
       }
-      this.setState({ act_set_time: this.state.act_set_time - 1 });
+      this.setState(
+        {
+          act_set_time: this.state.act_set_time - 1
+        }
+      );
     }, 1000);
 
-
-    if (this.state.set_status === 1){
+    if (this.state.set_status < 1) {
       this.stop();
     }
 
+    if (this.state.set_status  === 1 && this.state.currentIdx === this.ex_list.length-1) {
+      console.log("마지막 운동과 동시에 남은 세트가 0 일때 멈춰지나?")
+      this.stop();
+    }
   }
 
   stop() {
