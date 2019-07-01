@@ -23,7 +23,7 @@ componentDidMount() {
     fetch('http://127.0.0.1:8000/train/all')
     .then(response => response.json())
     .then(response => {
-
+      console.log('sss',response)
       let dict = response;
       let ex_dict=[]
       for (var i=0; i <dict.length; i++) {

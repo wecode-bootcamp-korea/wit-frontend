@@ -3,6 +3,7 @@ import './Signup.scss';
 import '../../Style/config.scss'
 import Button from '../../Components/Button/Button'
 import {withRouter} from 'react-router-dom';
+import * as constants from '../../constants';
 
 class Signup extends React.Component {
   constructor() {
@@ -24,21 +25,9 @@ class Signup extends React.Component {
     //확장해서 쓰려면 constructor에 super써야 모든 메소드 빌려와서 쓷나는말.
   } //초기화되는 값을 constructor에서 정해준다.
 
-  componentDidMount() {
-    console.log('componentDidMount')
-
-  }
-  componentDidUpdate() {
-    console.log('componentDidUpdate')
-
-  }
-  componentWillUnmount() {
-    console.log('componentWillUnmount')
-
-  }
-
   handleClick() {
-    fetch('http://127.0.0.1:8000/user/', {
+
+    fetch(`${constants.URL_BACK}/user/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -47,7 +36,7 @@ class Signup extends React.Component {
         user_email: this.state.userId,
         user_password: this.state.password,
         user_nickname: this.state.nickname
-      }) //rePassword === Password해야만  body로 전달하도록 바꿔야함.
+      })
 
       })
       .then(response => response.json())
@@ -57,7 +46,6 @@ class Signup extends React.Component {
            alert("이미 존재하는 이메일입니다.");
          }
 
-         //alert("회원가입 성공!");
       })
     }
   handleChange = (e) => {
@@ -101,7 +89,11 @@ handleSubmit = (e) => {
        return false; // The form won't submit
    }
    else {
+<<<<<<< HEAD
      fetch('http://127.0.0.1:8000/user/', {
+=======
+     fetch(`${constants.URL_BACK}/user/`, {
+>>>>>>> b01515aba1f176b1f7f79013570f15380134f427
        method: 'POST',
        headers: {
          'Content-Type': 'application/json',
@@ -110,7 +102,7 @@ handleSubmit = (e) => {
          user_email: this.state.userId,
          user_password: this.state.password,
          user_nickname: this.state.nickname
-       }) //rePassword === Password해야만  body로 전달하도록 바꿔야함.
+       })
 
        })
        .then(response => response.json())
@@ -123,8 +115,6 @@ handleSubmit = (e) => {
             alert('회원가입이 완료되었습니다!');
             this.props.history.push('/userInfo');
           }
-
-
        });
    }
 }
@@ -166,7 +156,7 @@ handleSubmit = (e) => {
                type="password"
                placeholder="password check"
                value={this.state.rePassword}
-               onChange={this.handleChange}
+               onChange={this.handleConfirmPassword}
              />
 
           </div>

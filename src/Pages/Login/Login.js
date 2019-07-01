@@ -4,6 +4,7 @@ import './Login.scss';
 import {withRouter} from 'react-router-dom';
 import '../../Style/config.scss'
 import Button from '../../Components/Button/Button'
+import * as constants from '../../constants';
 
 class Login extends React.Component {
   constructor() {
@@ -22,7 +23,7 @@ class Login extends React.Component {
 
 
   handleClick=()=> {
-    fetch('http://127.0.0.1:8000/user/signin', {
+    fetch(`${constants.URL_BACK}/user/signin`, {
       method:'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -35,9 +36,8 @@ class Login extends React.Component {
     })
     .then(response => response.json())
     .then(response => {
-      console.log(response.access_token);
       if (response.access_token) {
-        localStorage.setItem('wit-token', response.access_token);
+        sessionStorage.setItem('wit-token', response.access_token);
   }
 
       if (response) {
@@ -105,16 +105,9 @@ class Login extends React.Component {
             click={this.goToSignUp}
             text="회원가입"/>
           </div>
-          {/* <div className="spanblock">
-          //   <span className="logstart">아이디찾기</span>
-          //   <span className="logstart">비밀번호찾기</span>
-          // </div>*/}
+
         </div>
 
-        <p onClick={this.handleClick}>
-        id: {this.state.userId} <br/>
-        pw: {this.state.Password}
-        </p>
       </div>
     )
   }
