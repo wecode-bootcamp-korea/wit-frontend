@@ -1,10 +1,14 @@
-
-.small_dot {
+.reuslt-wrapper {
+    margin-top: 18px;
+  }
+  
+.result-small_dot {
   background-color: #D5FF45;
-  height: 25px;
-  width:25px;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  display: inline-block;
 }
-
 
 .status .small_dot {
   background-color: #0be7fc;
@@ -12,8 +16,11 @@
 }
 
 .result_selected-ex-text{
+  display: inline-block;
+  width: 59px;
   font-size: 17px;
   color: #FFFFFF;
   margin-left: 20px;
   font-weight: bold;
+  text-align: center;
 }

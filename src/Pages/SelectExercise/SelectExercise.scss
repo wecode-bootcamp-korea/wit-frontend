@@ -13,7 +13,13 @@
 
 .back-ground {
   background-color: #10101C;
-  padding-top: 15px;
+  padding-top:0px;
+  margin: 0 auto;
+  width: 370px;
+
+  .blocking {
+    display: inline-block;
+  }
 }
 
 .dot {
@@ -22,7 +28,7 @@
   background-color: #565662;
   border-radius: 50%;
   display: inline-block;
-  margin-left: 20px;
+  margin-left: 26px;
   margin-top: 20px;
 
 }
@@ -50,9 +56,7 @@ background-color: #D5FF45;
   font-weight: bold;
 }
 
-.blocking {
-  display: inline-block;
-}
+
 
 .selected-button {
   display: inline-block;

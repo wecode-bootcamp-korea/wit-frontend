@@ -89,11 +89,8 @@ handleSubmit = (e) => {
        return false; // The form won't submit
    }
    else {
-<<<<<<< HEAD
-     fetch('http://127.0.0.1:8000/user/', {
-=======
+
      fetch(`${constants.URL_BACK}/user/`, {
->>>>>>> b01515aba1f176b1f7f79013570f15380134f427
        method: 'POST',
        headers: {
          'Content-Type': 'application/json',

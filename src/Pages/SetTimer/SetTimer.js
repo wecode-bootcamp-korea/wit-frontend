@@ -15,7 +15,8 @@ class SetTimer extends React.Component {
       break_min: props.location.state.break_min,
       break_sec: props.location.state.break_sec,
       set: props.location.state.set,
-      exname: props.location.state.name
+      exname: props.location.state.name,
+      kcal: props.location.state.kcal
     };
 
     console.log(props)
@@ -60,7 +61,8 @@ class SetTimer extends React.Component {
         action_sec: this.state.action_sec,
         break_min: this.state.break_min,
         break_sec: this.state.break_sec,
-        set: this.state.set
+        set: this.state.set,
+        kcal: this.state.kcal
       }
 
       ];
@@ -73,7 +75,8 @@ class SetTimer extends React.Component {
       action_sec: this.state.action_sec,
       break_min: this.state.break_min,
       break_sec: this.state.break_sec,
-      set: this.state.set
+      set: this.state.set,
+      kcal: this.state.kcal
     });
 
     sessionStorage.setItem('settings', JSON.stringify(list));

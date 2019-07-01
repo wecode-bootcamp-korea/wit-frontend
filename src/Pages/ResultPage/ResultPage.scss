@@ -2,6 +2,7 @@
   background-color: #161626;
   height: 60px;
   margin:0;
+  padding-top: 7px;
 }
 .unify-text {
   color: white;
@@ -29,22 +30,22 @@
   white-space: nowrap;
 }
 
-.blocking{
-  padding-left: 15px;
-  padding-top: 10px;
+.result-blocking {
+  width: 365px;
+  margin: 0 auto;
+  display: block;
 }
 
 
 .result-bar {
-  width: 345px;
+  width: 365px;
   height: 80px;
   border-color: #D5FF45;
   border-style: solid;
-  margin-top: 35px;
-  margin-left: 15px;
   padding-top: 30px;
   text-align: center;
-
+  margin:0 auto;
+  margin-top: 30px;
 }
 
 .result-text{
@@ -58,12 +59,16 @@
 }
 
 .ment-today{
+  margin: 0 auto;
+  width: 407px;
   margin-top: 29px;
 }
 
 .final-ment{
-  margin-top: 20px;
-
+  width: 407px;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .result-text2{
@@ -80,16 +85,15 @@
   border-style: solid;
   border-width: 5px;
   height: 70px;
-  width: 250px;
-  margin-top:25px;
-  margin-bottom:15px;
-  margin-left: 50px;
+  width: 265px;
   outline:0;
   border:0;
   border-radius: 35px;
+  margin: 0 auto;
+  display: block;
+  margin-top:35px;
+  margin-bottom: 20px
 }
-
-
 
 .final-save-text{
   text-align: center;
@@ -100,10 +104,14 @@
 
 }
 
-
 .result-bar-text {
   color: #D5FF45;
   font-size: 17px;
   font-weight: bold;
   margin-left :10px;
+}
+
+
+.final-button{
+  margin-top: 20px
 }
