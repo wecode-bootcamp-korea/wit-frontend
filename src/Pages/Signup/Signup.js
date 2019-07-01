@@ -3,6 +3,7 @@ import './Signup.scss';
 import '../../Style/config.scss'
 import Button from '../../Components/Button/Button'
 import {withRouter} from 'react-router-dom';
+import * as constants from '../../constants';
 
 class Signup extends React.Component {
   constructor() {
@@ -38,7 +39,7 @@ class Signup extends React.Component {
   }
 
   handleClick() {
-    fetch('http://13.125.249.35:8080/user', {
+    fetch(`${constants.URL_BACK}/user/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -47,7 +48,7 @@ class Signup extends React.Component {
         user_email: this.state.userId,
         user_password: this.state.password,
         user_nickname: this.state.nickname
-      }) //rePassword === Password해야만  body로 전달하도록 바꿔야함.
+      }) 
 
       })
       .then(response => response.json())
@@ -57,7 +58,6 @@ class Signup extends React.Component {
            alert("이미 존재하는 이메일입니다.");
          }
 
-         //alert("회원가입 성공!");
       })
     }
   handleChange = (e) => {
@@ -101,7 +101,7 @@ handleSubmit = (e) => {
        return false; // The form won't submit
    }
    else {
-     fetch('http://localhost:8000/user', {
+     fetch(`${constants.URL_BACK}/user/`, {
        method: 'POST',
        headers: {
          'Content-Type': 'application/json',
@@ -110,7 +110,7 @@ handleSubmit = (e) => {
          user_email: this.state.userId,
          user_password: this.state.password,
          user_nickname: this.state.nickname
-       }) //rePassword === Password해야만  body로 전달하도록 바꿔야함.
+       })
 
        })
        .then(response => response.json())
@@ -123,8 +123,6 @@ handleSubmit = (e) => {
             alert('회원가입이 완료되었습니다!');
             this.props.history.push('/userInfo');
           }
-
-
        });
    }
 }

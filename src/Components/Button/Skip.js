@@ -3,13 +3,7 @@ import React from 'react';
 import './Skip.scss';
 import { withRouter } from 'react-router-dom';
 
-class Skip extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-
-  render() {
+const Skip = () => {
     return (
       <h1
         className="skip"
@@ -19,6 +13,5 @@ class Skip extends React.Component {
 
     );
   }
-}
 
 export default withRouter(Skip);

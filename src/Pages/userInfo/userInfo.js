@@ -1,10 +1,12 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import Button from '../../Components/Button/Button'
 import ExButton from '../../Components/Button/ExButton'
 import Skip from '../../Components/Button/Skip'
 import './userInfo.scss';
 import '../../Style/config.scss'
+import * as constants from '../../constants';
+
 
 
 class UserInfo extends React.Component {
@@ -27,13 +29,13 @@ class UserInfo extends React.Component {
   }
 
   componentDidMount() {
-
-      fetch('http://13.125.249.35:8000/train/all')
+      fetch(`${constants.URL_BACK}/train/all`)
       .then(response => response.json())
       .then(response => {
+        console.log(response)
         let pkKeyList = this.state.pkKeyList;
         let preferry = this.state.preferry;
-        for (var i = 0; i < response.length; i ++) {
+        for (var i = 0; i < 12; i ++) {
 
           pkKeyList.push(response[i]["pk"]);
           preferry.push(response[i]["fields"]["train_name"])
@@ -44,15 +46,12 @@ class UserInfo extends React.Component {
         })
 
 
-        console.log('componentDidMount', this.state.pkKeyList);
-        console.log('componentDidMount', this.state.preferry);
-
       });
 
     let token = localStorage.getItem('wit-token') || '';
 
     if (token) {
-      fetch('http://13.125.249.35:8080/user/detail', {
+      fetch('http://127.0.0.1/user/detail', {
         headers: {
             'Authorization': token,
         }
@@ -78,14 +77,10 @@ class UserInfo extends React.Component {
 
   }
 
-  skipThisPage = () => {
-    this.props.history.push('/SelectExercise');
-  }
 
   goToSelectExercise2 = () => {
-    console.log(this.state.pklist);
     let yetString = [];
-    for (var key in this.state.pklist) {
+    for (let key in this.state.pklist) {
 
       if (this.state.pklist[key] === true) {
         yetString.push(key)
@@ -110,13 +105,13 @@ class UserInfo extends React.Component {
     const data = {
       user_sex: gender,
       user_birthdate: birth,
-      user_weight: weight,
-      user_height: height,
+      user_weight: Number(weight),
+      user_height: Number(height),
       train_ids: somelist
     };
     console.log(data)
 
-    fetch('http://13.125.249.35:8000/train', {
+    fetch(`${constants.URL_BACK}/train`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -125,6 +120,7 @@ class UserInfo extends React.Component {
     })
       .then(response => response.json())
       .then(response => {
+        console.log(data)
          console.log(response['message'])
       })
 
@@ -139,6 +135,7 @@ class UserInfo extends React.Component {
       //   .then(response => {
       //      console.log(response['message'])
       //   })  nickname 다른주소로 보내기..
+     
     this.props.history.push('/SelectExercise');
     }
   handleChange = (e) => {
@@ -171,8 +168,7 @@ class UserInfo extends React.Component {
       <div>
         <div className="userinfowrap">
           <div className="boxposition">
-          <Skip
-          click={this.skipThisPage}/>
+          <Link className="link" to="/SelectExercise">Skip</Link>
             <p className="userinfotitl">선택정보<br/>입력</p>
             <div className="inputboxes-userinfo">
               <div className="timerbox">
@@ -199,7 +195,7 @@ class UserInfo extends React.Component {
               <div className="timerbox">
                 <label className="usrtitl">생일</label>
                 <input
-                  className="txtinput"
+                  className="birthdayInput"
                   name="birth"
                   type="date"
                   value={this.state.birth} //get해야되나?
@@ -212,7 +208,7 @@ class UserInfo extends React.Component {
                 <input
                   className="weihei"
                   name="weight"
-                  type="number"
+                  type="text"
                   value={this.state.weight} //get해야되나?
                   onChange={this.handleChange}
                 />
@@ -224,7 +220,7 @@ class UserInfo extends React.Component {
                 <input
                   className="weihei"
                   name="height"
-                  type="number"
+                  type="text"
                   value={this.state.height} //get해야되나?
                   onChange={this.handleChange}
                 />
@@ -257,8 +253,7 @@ class UserInfo extends React.Component {
               click={this.goToSelectExercise2}
               />
             </div>
-            <Skip
-            click={this.skipThisPage}/>
+            <Link className="link" to="SelectExercise/">Skip</Link>
           </div>
 
       </div>
