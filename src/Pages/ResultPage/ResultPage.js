@@ -22,14 +22,25 @@ class ResultPage extends React.Component {
     var temp = this.real_total[this.real_total.length-1] - this.total_min;
     this.total_sec = temp.toString().slice(0,2)
 
+    let total_kcal = 0;
+    for (var i=0; i <this.ex_list.length; i++) {
+      total_kcal += (this.ex_list[i].kcal * this.ex_list[i].set)
+    }
+    this.total_kcal = total_kcal;
+
     //운동결과 post용 데이터 전처리
     var post_list=[]
     var new_temp={};
     for (var i=0; i < this.ex_list.length; i++){
-      post_list.push({'activation_time':'00:'+this.ex_list[i].action_min+":"+this.ex_list[i].action_sec,
-      'break_time' : '00:'+this.ex_list[i].break_min+":"+this.ex_list[i].break_sec,
-      'train_id': this.ex_list[i].exname,
-      'train_set' : this.ex_list[i].set})
+      post_list.push(
+        {
+          'activation_time': '00:'+this.ex_list[i].action_min+":"+this.ex_list[i].action_sec,
+          'break_time': '00:'+this.ex_list[i].break_min+":"+this.ex_list[i].break_sec,
+          'train_id': this.ex_list[i].exname,
+          'train_set': this.ex_list[i].set,
+          'ex_kcal': this.ex_list[i].kcal
+        }
+      )
     }
     console.log('post_list:', post_list)
     console.log('valeu', post_list[0].train_id)
@@ -92,7 +103,7 @@ class ResultPage extends React.Component {
           <p className="unify-text"> Result Page </p>
         </div>
 
-        <div className="blocking">
+        <div className="result-blocking">
           {this.ex_list.map((el, idx) => {
             return (<Resultcircle
                     key={idx}
@@ -103,7 +114,7 @@ class ResultPage extends React.Component {
         <div className="result-bar">
           <span className="result-bar-text"> Action. {this.ex_list.length}</span>
           <span className="result-bar-text"> Time. {this.total_min >= 10 ? this.total_min : "0"+this.total_min}:{this.total_sec} </span>
-          <span className="result-bar-text"> Kcal. 1700 </span>
+          <span className="result-bar-text"> Kcal. {this.total_kcal} </span>
 
         </div>
 
@@ -113,7 +124,7 @@ class ResultPage extends React.Component {
           <p className="result-text">지금 저장하세요.</p>
         </div>
 
-        <div>
+        <div className="final-button">
           <button onClick={this.resultPost} className="final-save-button">
           <p className="final-save-text">저장하기</p>
           </button>

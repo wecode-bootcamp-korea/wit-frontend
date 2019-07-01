@@ -30,15 +30,18 @@ componentDidMount() {
         ex_dict.push(dict[i].fields)
 
       }
-      this.setState({default_data: ex_dict})
-      }
-)
+      this.setState(
+        {
+          default_data: ex_dict
+        }, () => console.log("this.state.default_data:", this.state.default_data)
+      )
+    }
+    )
     console.log(JSON.parse(sessionStorage.getItem('settings')))
      this.setState({
        chosen_list: JSON.parse(sessionStorage.getItem('settings')) || []
-     })
+     }, ()=> console.log("this.state.chosen_list:", this.state.chosen_list))
 }
-
 
   goToIntervalStart() {
     this.props.history.push({
@@ -48,7 +51,8 @@ componentDidMount() {
               action_sec: this.state.chosen_list.action_sec,
               break_min: this.state.chosen_list.break_min,
               break_sec: this.state.chosen_list.break_sec,
-              set: this.state.chosen_list.set
+              set: this.state.chosen_list.set,
+              kcal: this.state.chosen_list.kcal
       }
     })
   }
