@@ -105,16 +105,9 @@ class Login extends React.Component {
             click={this.goToSignUp}
             text="회원가입"/>
           </div>
-          {/* <div className="spanblock">
-          //   <span className="logstart">아이디찾기</span>
-          //   <span className="logstart">비밀번호찾기</span>
-          // </div>*/}
+
         </div>
 
-        <p onClick={this.handleClick}>
-        id: {this.state.userId} <br/>
-        pw: {this.state.Password}
-        </p>
       </div>
     )
   }
