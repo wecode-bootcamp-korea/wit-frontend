@@ -17,6 +17,7 @@ class Interval extends React.Component {
 
     const currentIdx = 0;
     this.ex_list = JSON.parse(sessionStorage.getItem('settings')) || [{}]
+    console.log(JSON.parse(sessionStorage.getItem('settings')))
     const alarming = require('./coountdown.mp3');
     this.sound = new Audio(alarming);
 
@@ -130,19 +131,28 @@ class Interval extends React.Component {
   }
 
   stop() {
+    console.log(this.intervalID);
     clearInterval(this.intervalID)
   }
 
 
-  handleclick() {
-  if (this.state.clicked===false) {
-    this.stop();
-    this.setState({clicked: true})
+  handleclick= () => {
 
+  if (this.state.clicked === false) {
+    this.stop();
+    this.setState(
+      {
+        clicked: true
+      }
+    )
   }
-  else if (this.state.clicked===true){
+  else if (this.state.clicked === true) {
     this.start();
-    this.setState({clicked: false})
+    this.setState(
+      {
+        clicked: false
+      }
+    )
   }
 }
 
@@ -188,6 +198,8 @@ class Interval extends React.Component {
                   total_time={(Number(currentEx.action_min)*60) + Number(currentEx.action_sec)}
                   status_change={this.state.set_status}
                   stop={this.state.status}
+                  pause={this.state.clicked}
+                  handleclick = {this.handleclick}
                 />
               </div>
             </div>

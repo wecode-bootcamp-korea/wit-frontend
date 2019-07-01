@@ -22,7 +22,7 @@ class Login extends React.Component {
 
 
   handleClick=()=> {
-    fetch('http://13.125.249.35:8000/user/signin', {
+    fetch('http://127.0.0.1:8000/user/signin', {
       method:'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -42,7 +42,7 @@ class Login extends React.Component {
 
       if (response) {
         alert('로그인이 완료되었습니다!');
-        this.props.history.push('/SelectExercicse');
+        this.props.history.push('/SelectExercise');
   }
 })
 }

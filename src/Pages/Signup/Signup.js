@@ -38,7 +38,7 @@ class Signup extends React.Component {
   }
 
   handleClick() {
-    fetch('http://13.125.249.35:8080/user', {
+    fetch('http://127.0.0.1:8000/user/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -101,7 +101,7 @@ handleSubmit = (e) => {
        return false; // The form won't submit
    }
    else {
-     fetch('http://localhost:8000/user', {
+     fetch('http://127.0.0.1:8000/user/', {
        method: 'POST',
        headers: {
          'Content-Type': 'application/json',
