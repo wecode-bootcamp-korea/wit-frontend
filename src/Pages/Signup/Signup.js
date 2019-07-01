@@ -25,19 +25,6 @@ class Signup extends React.Component {
     //확장해서 쓰려면 constructor에 super써야 모든 메소드 빌려와서 쓷나는말.
   } //초기화되는 값을 constructor에서 정해준다.
 
-  componentDidMount() {
-    console.log('componentDidMount')
-
-  }
-  componentDidUpdate() {
-    console.log('componentDidUpdate')
-
-  }
-  componentWillUnmount() {
-    console.log('componentWillUnmount')
-
-  }
-
   handleClick() {
     fetch(`${constants.URL_BACK}/user/`, {
       method: 'POST',
@@ -164,7 +151,7 @@ handleSubmit = (e) => {
                type="password"
                placeholder="password check"
                value={this.state.rePassword}
-               onChange={this.handleChange}
+               onChange={this.handleConfirmPassword}
              />
 
           </div>
