@@ -31,7 +31,8 @@ goToSettimer() {
             onClick={()=>{this.setState({clicked: !this.state.clicked })}}
             onClick={this.goToSettimer.bind(this)}>
         <span className="dot">
-          <img src={require(`../../images/${this.props.info.train_name}.png`)} alt="" />
+          <img src={`${this.state.clicked ?  require(`../../images/d_images/${this.props.info.train_name}.png`) : require(`../../images/w_images/${this.props.info.train_name}.png`)}`} />
+
         </span>
         <p className="ex-text">{this.props.info.train_name}</p>
       </div>
