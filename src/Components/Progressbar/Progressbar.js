@@ -9,7 +9,7 @@ class Progressbar extends React.Component {
     super(props);
 
     this.state = {
-      //percent: 0,
+      // percent: 0,
       data: this.getData(0),
       pause: this.props.pause,
       temp: false,

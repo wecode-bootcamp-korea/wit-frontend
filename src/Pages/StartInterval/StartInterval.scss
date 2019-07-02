@@ -8,7 +8,7 @@
   font-weight: bold;
   margin-right: 25px;
   margin-block-start: none;
-  margin-top: 3px;
+  margin-top: 10px;
 }
 
 .button-up:hover {
@@ -22,7 +22,7 @@
 
 .current-ex{
   margin-bottom: 0;
-  margin-top:0;
+  margin-top:25px;
   color: #FFFFFF;
   text-align: center;
   font-size: 30px;
@@ -83,13 +83,11 @@
   color:#FFFFFF;
   font-weight: bold;
   display: inline-block;
-
 }
 
-
-
 .button-wrapper {
-  padding-top: 25px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .total-status-wrapper{
@@ -109,11 +107,18 @@
 }
 
 .main-ticking {
-  display:flex;
-  padding-left:130px;
-
+  text-align: center;
 }
 
 .status .small_dot{
   background-color: #D5FF45;
+}
+
+.clock-div {
+  margin-top: -33px;
+  margin-bottom: -52px;
+}
+
+.countdown-clock {
+  padding: 11px;
 }
