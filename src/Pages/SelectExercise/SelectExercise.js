@@ -12,7 +12,7 @@ class Choice extends React.Component {
   this.state = {
     clicked: false,
     default_data: [],
-    chosen_list: []
+    chosen_list: [],
   }
 }
 
@@ -39,22 +39,47 @@ componentDidMount() {
     console.log(JSON.parse(sessionStorage.getItem('settings')))
      this.setState({
        chosen_list: JSON.parse(sessionStorage.getItem('settings')) || []
-     }, ()=> console.log("this.state.chosen_list:", this.state.chosen_list))
+     }, () => this.getTotalTime())
+     this.getTotalKcal();
 }
 
-  goToIntervalStart() {
-    this.props.history.push({
-      pathname: '/StartInterval',
-      state: {name: this.state.chosen_list.exname,
-              action_min: this.state.chosen_list.action_min,
-              action_sec: this.state.chosen_list.action_sec,
-              break_min: this.state.chosen_list.break_min,
-              break_sec: this.state.chosen_list.break_sec,
-              set: this.state.chosen_list.set,
-              kcal: this.state.chosen_list.kcal
-      }
+  getTotalTime() {
+    let total_time = 0;
+    for (var i = 0; i < this.state.chosen_list.length; i++) {
+      total_time += ((Number(this.state.chosen_list[i].action_min)*60 + Number(this.state.chosen_list[i].action_sec)) * Number(this.state.chosen_list[i].set))
+      console.log(total_time);
     }
-  )
+    let total_min = Math.floor(total_time/60);
+    let temp = total_time - total_min*60;
+    let total_sec = temp.toString().slice(0,2)
+    return (`${total_min >= 10 ? total_min : "0"+total_min}:${total_sec}`);
+    }
+
+  getTotalKcal() {
+    let total_kcal = 0;
+    for (var j = 0; j< this.state.chosen_list.length; j++) {
+      total_kcal += (this.state.chosen_list[j].kcal*this.state.chosen_list[j].set)
+      console.log(total_kcal)
+    }
+    return total_kcal;
+  }
+
+  goToIntervalStart() {
+    this.props.history.push(
+      {
+        pathname: '/StartInterval',
+        state:
+        {
+          name: this.state.chosen_list.exname,
+          action_min: this.state.chosen_list.action_min,
+          action_sec: this.state.chosen_list.action_sec,
+          break_min: this.state.chosen_list.break_min,
+          break_sec: this.state.chosen_list.break_sec,
+          set: this.state.chosen_list.set,
+          kcal: this.state.chosen_list.kcal
+        }
+      }
+    )
   }
 
   render() {
@@ -83,10 +108,10 @@ componentDidMount() {
           <button onClick={this.goToIntervalStart.bind(this)} className="startbutton">
             <p className="startbutton-text">START</p>
             </button>
-          <div>
-            <p className= "selected_text">Action. {this.state.total_set} </p>
-            <p className= "selected_text">TIME. {this.state.total_time} </p>
-            <p className= "selected_text">Kcal. {this.state.total_time} </p>
+          <div className="selected-wrapper">
+            <p className= "selected_text">Action. {this.state.chosen_list.length} </p>
+            <p className= "selected_text">TIME. {this.getTotalTime()} </p>
+            <p className= "selected_text">Kcal. {this.getTotalKcal()} </p>
           </div>
           <div>
 

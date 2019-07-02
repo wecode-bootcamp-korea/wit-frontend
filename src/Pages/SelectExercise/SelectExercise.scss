@@ -89,10 +89,10 @@ background-color: #D5FF45;
 }
 
 .selected_text {
-  color: #FFFFFF;
+  color: #D5FF45;
   display: inline-block;
   margin-left: 15px;
-  margin-right: 10px;
+  margin-right: 0px;
   font-size: 13px;
 }
 
@@ -115,4 +115,8 @@ background-color: #D5FF45;
   font-weight: bold;
   margin-top: 15px;
   width: 100%;
+}
+
+.selected-wrapper {
+  margin-top: -10px;
 }
