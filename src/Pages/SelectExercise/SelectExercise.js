@@ -2,7 +2,6 @@ import React from 'react';
 import Selectcircle   from '../../Components/Selectcircle/Selectcircle';
 import Selectedcircle   from '../../Components/Selectedcircle/Selectedcircle';
 import './SelectExercise.scss';
-import SetTimer from '../SetTimer/SetTimer';
 import {withRouter} from 'react-router-dom';
 
 class Choice extends React.Component {
@@ -54,7 +53,8 @@ componentDidMount() {
               set: this.state.chosen_list.set,
               kcal: this.state.chosen_list.kcal
       }
-    })
+    }
+  )
   }
 
   render() {

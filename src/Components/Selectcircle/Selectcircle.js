@@ -30,7 +30,9 @@ goToSettimer() {
       <div className={`blocking ${this.state.clicked ? 'active' : ''}`}
             onClick={()=>{this.setState({clicked: !this.state.clicked })}}
             onClick={this.goToSettimer.bind(this)}>
-        <span className="dot"></span>
+        <span className="dot">
+          <img src={require(`../../images/${this.props.info.train_name}.png`)} alt="" />
+        </span>
         <p className="ex-text">{this.props.info.train_name}</p>
       </div>
     )
